@@ -7,4 +7,9 @@ public class Exhibition extends Place {
     public Exhibition() {
         vehicleInPlace = new ArrayList<>();
     }
+
+    @Override
+    public String toString() {
+        return "EXIBITION\t" + super.toString();
+    }
 }

@@ -1,4 +1,4 @@
-package pl.gb.edu.codecool.model.vehicle;
+package pl.gb.edu.codecool.model.enums;
 
 public enum Type {
     GROUND_RIDING,
