@@ -25,6 +25,10 @@ public abstract class Place {
         }
     }
 
+    public List<Vehicle> getVehicleInPlace() {
+        return vehicleInPlace;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();

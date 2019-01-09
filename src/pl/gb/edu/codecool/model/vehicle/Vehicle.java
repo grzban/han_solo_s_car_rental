@@ -10,7 +10,7 @@ public class Vehicle {
     private int vehicleId;
     private String name;
     private Model model;
-    private Date dateOfProductio;
+    private Date dateOfProduction;
     private int mileageOfTheVehicle;
     private Type vehicleType;
     private int amountOfFuel;
@@ -40,12 +40,12 @@ public class Vehicle {
         this.model = model;
     }
 
-    public Date getDateOfProductio() {
-        return dateOfProductio;
+    public Date getDateOfProduction() {
+        return dateOfProduction;
     }
 
-    public void setDateOfProductio(Date dateOfProductio) {
-        this.dateOfProductio = dateOfProductio;
+    public void setDateOfProduction(Date dateOfProduction) {
+        this.dateOfProduction = dateOfProduction;
     }
 
     public int getMileageOfTheVehicle() {
@@ -88,7 +88,7 @@ public class Vehicle {
         result.append("\nAmount of fuel:\t" + getAmountOfFuel());
         result.append("\nModel:\t" + getModel());
         result.append("\nType:\t" + getVehicleType());
-        result.append("\nDate of production:\t" + getDateOfProductio());
+        result.append("\nDate of production:\t" + getDateOfProduction());
         result.append("\nMileage Of The Vehicle:\t" + getMileageOfTheVehicle());
         result.append("\nState:\t" + getState());
 

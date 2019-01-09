@@ -1,4 +1,4 @@
-package pl.gb.edu.codecool.model;
+package pl.gb.edu.codecool.controller;
 
 import pl.gb.edu.codecool.model.vehicle.Vehicle;
 
@@ -16,14 +16,12 @@ public class VehicleRental {
         availableVehicles = new ArrayList<>();
     }
 
-    /*
-    Move to view
-    public List<Vehicle> showAllVehicles(){
+    public List<Vehicle> getAllVehicles(){
         allVehicles.clear();
         allVehicles.addAll(rentedVehicles);
         allVehicles.addAll(availableVehicles);
         return allVehicles;
-    }*/
+    }
 
     public List<Vehicle> getRentedVehicles() {
         return rentedVehicles;
