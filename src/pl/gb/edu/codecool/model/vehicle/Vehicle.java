@@ -2,7 +2,6 @@ package pl.gb.edu.codecool.model.vehicle;
 
 import pl.gb.edu.codecool.model.enums.Model;
 import pl.gb.edu.codecool.model.enums.Type;
-import pl.gb.edu.codecool.model.enums.VehicleState;
 
 import java.util.Date;
 
@@ -14,7 +13,6 @@ public class Vehicle {
     private int mileageOfTheVehicle;
     private Type vehicleType;
     private int amountOfFuel;
-    private VehicleState state;
 
     public int getVehicleId() {
         return vehicleId;
@@ -72,14 +70,6 @@ public class Vehicle {
         this.amountOfFuel = amountOfFuel;
     }
 
-    public VehicleState getState() {
-        return state;
-    }
-
-    public void setState(VehicleState state) {
-        this.state = state;
-    }
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -96,8 +86,6 @@ public class Vehicle {
         result.append("\tDate of production:\t" + getDateOfProduction());
         result.append("\n");
         result.append("\tMileage Of The Vehicle:\t" + getMileageOfTheVehicle());
-        result.append("\n");
-        result.append("\tState:\t" + getState());
 
         return result.toString();
     }

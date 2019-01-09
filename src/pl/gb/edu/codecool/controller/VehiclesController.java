@@ -2,7 +2,6 @@ package pl.gb.edu.codecool.controller;
 
 import pl.gb.edu.codecool.model.enums.Model;
 import pl.gb.edu.codecool.model.enums.Type;
-import pl.gb.edu.codecool.model.enums.VehicleState;
 import pl.gb.edu.codecool.model.vehicle.Vehicles;
 import pl.gb.edu.codecool.model.vehicle.Vehicle;
 import pl.gb.edu.codecool.view.VehiclesView;
@@ -48,7 +47,6 @@ public class VehiclesController {
         vehicle.setMileageOfTheVehicle(3000);
         vehicle.setAmountOfFuel(100);
         vehicle.setDateOfProduction(new Date(1287784800000l));
-        vehicle.setState(VehicleState.AVAILABLE_EXHIBITION);
 
         vehicles.addVehicle(vehicle);
 
@@ -60,7 +58,6 @@ public class VehiclesController {
         vehicle.setMileageOfTheVehicle(5000);
         vehicle.setAmountOfFuel(1000);
         vehicle.setDateOfProduction(new Date(1287794800000l));
-        vehicle.setState(VehicleState.AVAILABLE_PARKING);
 
         vehicles.addVehicle(vehicle);
     }
