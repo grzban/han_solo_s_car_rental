@@ -36,9 +36,13 @@ public class Run {
         System.out.println(vehicle);
         System.out.println(outside);
 
-        System.out.println("All vehicles in outside");
         VehiclesView vehiclesView = new VehiclesView();
+        System.out.println("All vehicles in outside");
         vehiclesView.showVehicles(outside);
+
+        System.out.println("Vehicle details");
+        vehiclesView.showVehicleDetails(1, outside);
+
 
     }
 }

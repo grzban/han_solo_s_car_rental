@@ -83,14 +83,21 @@ public class Vehicle {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append("Id:\t" + getVehicleId());
-        result.append("\nName:\t" + getName());
-        result.append("\nAmount of fuel:\t" + getAmountOfFuel());
-        result.append("\nModel:\t" + getModel());
-        result.append("\nType:\t" + getVehicleType());
-        result.append("\nDate of production:\t" + getDateOfProduction());
-        result.append("\nMileage Of The Vehicle:\t" + getMileageOfTheVehicle());
-        result.append("\nState:\t" + getState());
+        result.append("\tId:\t" + getVehicleId());
+        result.append("\n");
+        result.append("\tName:\t" + getName());
+        result.append("\n");
+        result.append("\tFuel:\t" + getAmountOfFuel());
+        result.append("\n");
+        result.append("\tModel:\t" + getModel());
+        result.append("\n");
+        result.append("\tType:\t" + getVehicleType());
+        result.append("\n");
+        result.append("\tDate of production:\t" + getDateOfProduction());
+        result.append("\n");
+        result.append("\tMileage Of The Vehicle:\t" + getMileageOfTheVehicle());
+        result.append("\n");
+        result.append("\tState:\t" + getState());
 
         return result.toString();
     }
