@@ -45,10 +45,11 @@ public class MainMenuController {
                 System.out.println("3. usunięcie pojazdu z listy dostępnych pojazdów");
                 showAvailableVehicles();
                 vehiclesController.removeVehicle();
-
                 break;
             case "4":
                 System.out.println("4. szczegóły pojazdu");
+                mainMenu.printMainMenu();
+                vehiclesController.showVehicleDetails();
                 break;
             case "5":
                 System.out.println("5. wypożyczanie pojazdu");

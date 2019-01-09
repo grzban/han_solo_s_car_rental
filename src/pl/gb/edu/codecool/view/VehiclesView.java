@@ -1,6 +1,5 @@
 package pl.gb.edu.codecool.view;
 
-import pl.gb.edu.codecool.model.place.Place;
 import pl.gb.edu.codecool.model.vehicle.Vehicle;
 
 import java.util.Iterator;
@@ -12,7 +11,7 @@ public class VehiclesView {
 
     public void showVehicles(List<Vehicle> vehicles) {
         Iterator allVehicles = vehicles.listIterator();
-        if(allVehicles.hasNext()) {
+        if (allVehicles.hasNext()) {
             System.out.println("+--------------------------------------------------------------+");
 
             while (allVehicles.hasNext()) {
@@ -25,20 +24,21 @@ public class VehiclesView {
         }
     }
 
-    public void showVehicleDetails(int vehicleId, Place availablePlace) {
-        Iterator allVehicles = availablePlace.getVehicleInPlace().listIterator();
-
-        while(allVehicles.hasNext()) {
-            vehicle = (Vehicle) allVehicles.next();
-            if(vehicle.getVehicleId() == vehicleId){
-                System.out.println("+--------------------------------------------------------------+");
-                System.out.println(vehicle.toString());
-                System.out.println("+--------------------------------------------------------------+");
-            } else {
-                System.out.println("Vehicle does't exist.");
+    public void showVehicleDetails(int vehicleId, List<Vehicle> vehicles) {
+        Iterator allVehicles = vehicles.listIterator();
+        if (allVehicles.hasNext()) {
+            while (allVehicles.hasNext()) {
+                vehicle = (Vehicle) allVehicles.next();
+                if (vehicle.getVehicleId() == vehicleId) {
+                    System.out.println("+--------------------------------------------------------------+");
+                    System.out.println(vehicle.toString());
+                    System.out.println("+--------------------------------------------------------------+");
+                } else {
+                    System.out.println("Vehicle does't exist.");
+                }
             }
+        } else {
+            System.out.println("I can't show you any details. The vehicle doesn't exist");
         }
-
-
     }
 }

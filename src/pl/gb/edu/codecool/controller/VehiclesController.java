@@ -33,6 +33,12 @@ public class VehiclesController {
         vehicles.removeVehicle(vehicleId);
     }
 
+    public void showVehicleDetails() {
+        Scanner scanner = new Scanner(System.in);
+        int vehicleId = scanner.nextInt();
+        vehiclesView.showVehicleDetails(vehicleId, vehicles.getAvailableVehicles());
+    }
+
     public void exampleVehicles() {
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleId(1);
