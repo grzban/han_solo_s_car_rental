@@ -1,6 +1,6 @@
 package pl.gb.edu.codecool.model.vehicle;
 
-import pl.gb.edu.codecool.model.enums.Model;
+import pl.gb.edu.codecool.model.enums.Models;
 import pl.gb.edu.codecool.model.enums.Type;
 
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.Date;
 public class Vehicle {
     private int vehicleId;
     private String name;
-    private Model model;
+    private Models models;
     private Date dateOfProduction;
     private int mileageOfTheVehicle;
     private Type vehicleType;
@@ -30,12 +30,12 @@ public class Vehicle {
         this.name = name;
     }
 
-    public Model getModel() {
-        return model;
+    public Models getModels() {
+        return models;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setModels(Models models) {
+        this.models = models;
     }
 
     public Date getDateOfProduction() {
@@ -79,7 +79,7 @@ public class Vehicle {
         result.append("\n");
         result.append("\tFuel:\t" + getAmountOfFuel());
         result.append("\n");
-        result.append("\tModel:\t" + getModel());
+        result.append("\tModels:\t" + getModels());
         result.append("\n");
         result.append("\tType:\t" + getVehicleType());
         result.append("\n");

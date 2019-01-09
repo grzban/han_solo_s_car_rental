@@ -1,6 +1,6 @@
 package pl.gb.edu.codecool.controller;
 
-import pl.gb.edu.codecool.model.enums.Model;
+import pl.gb.edu.codecool.model.enums.Models;
 import pl.gb.edu.codecool.model.enums.Type;
 import pl.gb.edu.codecool.model.vehicle.Vehicles;
 import pl.gb.edu.codecool.model.vehicle.Vehicle;
@@ -41,7 +41,7 @@ public class VehiclesController {
     public void exampleVehicles() {
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleId(1);
-        vehicle.setModel(Model.MODEL_1);
+        vehicle.setModels(Models.MODEL_1);
         vehicle.setName("Vehicle 1");
         vehicle.setVehicleType(Type.FLYING_FIGHTER);
         vehicle.setMileageOfTheVehicle(3000);
@@ -52,7 +52,7 @@ public class VehiclesController {
 
         vehicle = new Vehicle();
         vehicle.setVehicleId(2);
-        vehicle.setModel(Model.MODEL_2);
+        vehicle.setModels(Models.MODEL_2);
         vehicle.setName("Vehicle 2");
         vehicle.setVehicleType(Type.FLYING_TROOP_SHIP);
         vehicle.setMileageOfTheVehicle(5000);
