@@ -12,4 +12,9 @@ public class MainMenu {
         System.out.println("6. zwrot pojazdu");
     }
 
+    public void clearConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
 }

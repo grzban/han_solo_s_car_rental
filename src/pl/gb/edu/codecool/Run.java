@@ -21,15 +21,7 @@ public class Run {
 
 /*
 //        elementy do controllera
-        Vehicle vehicle = new Vehicle();
-        vehicle.setVehicleId(1);
-        vehicle.setModel(Model.MODEL_1);
-        vehicle.setName("Vehicle 1");
-        vehicle.setVehicleType(Type.FLYING_FIGHTER);
-        vehicle.setMileageOfTheVehicle(3000);
-        vehicle.setAmountOfFuel(100);
-        vehicle.setDateOfProduction(new Date(1287784800000l));
-        vehicle.setState(VehicleState.AVAILABLE_EXHIBITION);
+
 
         Place outside = new Outside();
         Place exibition = new Exhibition();
