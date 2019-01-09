@@ -2,11 +2,16 @@ package pl.gb.edu.codecool.model.place;
 
 import pl.gb.edu.codecool.model.vehicle.Vehicle;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class Place {
-    List<Vehicle> vehicleInPlace;
+    private List<Vehicle> vehicleInPlace;
+
+    public Place() {
+        vehicleInPlace = new ArrayList<>();
+    }
 
     public void addVehicleToPlace(Vehicle vehicle) {
         vehicleInPlace.add(vehicle);
