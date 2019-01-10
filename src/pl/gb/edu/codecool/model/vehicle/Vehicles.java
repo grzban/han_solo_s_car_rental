@@ -25,6 +25,16 @@ public class Vehicles {
         }
     }
 
+    public void returnOfTheVehicle(int vehicleId) {
+        try {
+            Vehicle vehicle = getVehicleById(vehicleId, getRentedVehicles());
+            getRentedVehicles().remove(vehicle);
+            getAvailableVehicles().add(vehicle);
+        } catch (NullPointerException e) {
+            System.out.println("Nie można zwrócić pojazdu");
+        }
+    }
+
     public void rentTheVehicle(int vehicleId) {
         try {
             Vehicle vehicle = getVehicleById(vehicleId, getAvailableVehicles());

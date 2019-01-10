@@ -59,6 +59,7 @@ public class MainMenuController {
                 break;
             case "6":
                 System.out.println("6. zwrot pojazdu");
+                vehiclesController.returnOfTheVehicle();
                 break;
             default:
                 System.out.println("Wybierz inną opcję");

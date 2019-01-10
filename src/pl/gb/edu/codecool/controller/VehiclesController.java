@@ -64,6 +64,11 @@ public class VehiclesController {
         }
     }
 
+    public void returnOfTheVehicle () {
+        int vehicleId = getUserChoice("Zwrot pojazdu");
+        vehicles.returnOfTheVehicle(vehicleId);
+    }
+
     public void exampleVehicles() {
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleId(1);
