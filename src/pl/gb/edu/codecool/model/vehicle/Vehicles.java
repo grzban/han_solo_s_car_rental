@@ -25,7 +25,6 @@ public class Vehicles {
         } catch (NullPointerException e) {
             System.out.println("Nothing to remove");
         }
-
     }
 
     public void rentTheVehicle(int vehicleId) {
@@ -45,8 +44,7 @@ public class Vehicles {
         } catch (NullPointerException e) {
             System.out.println("The vehicle isn't available.");
         }
-        System.out.println("Coś się pojawi?????");
-        return null;
+        throw new NullPointerException();
     }
 
 

@@ -56,8 +56,12 @@ public class VehiclesController {
     public void showVehicleDetails() {
         Scanner scanner = new Scanner(System.in);
         int vehicleId = scanner.nextInt();
-        Vehicle vehicle = vehicles.getVehicleDetails(vehicleId, vehicles.getAvailableVehicles());
-        vehiclesView.showVehicleDetails(vehicle);
+        try {
+            Vehicle vehicle = vehicles.getVehicleDetails(vehicleId, vehicles.getAvailableVehicles());
+            vehiclesView.showVehicleDetails(vehicle);
+        } catch (NullPointerException e) {
+            System.out.println("Nothing to show");
+        }
     }
 
     public void exampleVehicles() {
