@@ -1,14 +1,14 @@
 package pl.gb.edu.codecool;
 
 import pl.gb.edu.codecool.controller.MainMenuController;
-import pl.gb.edu.codecool.view.MainMenu;
+import pl.gb.edu.codecool.view.Menus;
 
 public class Run {
 
     public static void main(String[] args) {
 
-        MainMenu mainMenu = new MainMenu();
-        MainMenuController mainMenuController = new MainMenuController(mainMenu);
+        Menus menus = new Menus();
+        MainMenuController mainMenuController = new MainMenuController(menus);
         while (true) {
             mainMenuController.addMainMenuHandler();
         }

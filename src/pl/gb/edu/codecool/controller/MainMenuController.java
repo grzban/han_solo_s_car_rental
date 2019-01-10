@@ -1,21 +1,23 @@
 package pl.gb.edu.codecool.controller;
 
 import pl.gb.edu.codecool.model.vehicle.Vehicles;
-import pl.gb.edu.codecool.view.MainMenu;
+import pl.gb.edu.codecool.view.Menus;
 import pl.gb.edu.codecool.view.VehiclesView;
 
 import java.util.Scanner;
 
 public class MainMenuController {
 
-    private MainMenu mainMenu;
+    private Menus menus;
+    private MenuController menuController;
     private VehiclesController vehiclesController;
     private Vehicles vehicles;
     private VehiclesView vehiclesView;
 
-    public MainMenuController(MainMenu mainMenu) {
-        this.mainMenu = mainMenu;
-        mainMenu.printMainMenu();
+    public MainMenuController(Menus menus) {
+        this.menus = menus;
+        menus.printMainMenu();
+        menuController = new MenuController();
         vehicles = new Vehicles();
         vehiclesView = new VehiclesView();
         vehiclesController = new VehiclesController(vehicles, vehiclesView);
@@ -28,31 +30,32 @@ public class MainMenuController {
 
         switch (choice) {
             case "q":
-                System.out.println("No to pa");
-                System.exit(0);
+                menuController.closeApplication();
                 break;
             case "1":
-                mainMenu.clearConsole();
+                menus.clearConsole();
                 System.out.println("1. lista obecnie dostępnych pojazdów");
                 showAvailableVehicles();
-                mainMenu.printMainMenu();
+                menus.printMainMenu();
                 break;
             case "2":
                 System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
                 break;
             case "3":
-                mainMenu.clearConsole();
+                menus.clearConsole();
                 System.out.println("3. usunięcie pojazdu z listy dostępnych pojazdów");
                 showAvailableVehicles();
                 vehiclesController.removeVehicle();
                 break;
             case "4":
                 System.out.println("4. szczegóły pojazdu");
-                mainMenu.printMainMenu();
+                menus.printMainMenu();
                 vehiclesController.showVehicleDetails();
                 break;
             case "5":
                 System.out.println("5. wypożyczanie pojazdu");
+                showAvailableVehicles();
+                vehiclesController.rentTheVehicle();
                 break;
             case "6":
                 System.out.println("6. zwrot pojazdu");

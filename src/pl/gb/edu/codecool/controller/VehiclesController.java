@@ -24,18 +24,40 @@ public class VehiclesController {
         vehiclesView.showVehicles(vehicles.getAvailableVehicles());
     }
 
+    public void showRentedVehicles() {
+        vehiclesView.showVehicles(vehicles.getRentedVehicles());
+    }
+
     public void removeVehicle() {
-        System.out.println("Który pojazd chcesz usunąć");
+        vehicles.removeVehicle(getUserChoice("Który pojazd chcesz usunąć?"));
+        showAvailableVehicles();
+    }
+
+    public void rentTheVehicle() {
+        vehicles.rentTheVehicle(getUserChoice("Który pojazd chcesz wypożyczyć?"));
+        showRentedVehicles();
+    }
+
+
+    public int getUserChoice(String message) {
+        System.out.println(message);
 
         Scanner scanner = new Scanner(System.in);
-        int vehicleId = scanner.nextInt();
-        vehicles.removeVehicle(vehicleId);
+        while (true) {
+            try {
+                int vehicleId = Integer.parseInt(scanner.next());
+                return vehicleId;
+            } catch (NumberFormatException e) {
+                System.out.println("Nieznana opcja. Spróbuj ponownie.");
+            }
+        }
     }
 
     public void showVehicleDetails() {
         Scanner scanner = new Scanner(System.in);
         int vehicleId = scanner.nextInt();
-        vehiclesView.showVehicleDetails(vehicleId, vehicles.getAvailableVehicles());
+        Vehicle vehicle = vehicles.getVehicleDetails(vehicleId, vehicles.getAvailableVehicles());
+        vehiclesView.showVehicleDetails(vehicle);
     }
 
     public void exampleVehicles() {
