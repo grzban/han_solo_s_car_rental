@@ -29,12 +29,12 @@ public class VehiclesController {
     }
 
     public void removeVehicle() {
-        vehicleResource.removeVehicle(getUserChoice("Który pojazd chcesz usunąć?"));
+//        vehicleResource.removeVehicle(getUserChoice("Który pojazd chcesz usunąć?"));
         showAvailableVehicles();
     }
 
     public void rentTheVehicle() {
-        vehicleResource.rentTheVehicle(getUserChoice("Który pojazd chcesz wypożyczyć?"));
+//        vehicleResource.rentTheVehicle(getUserChoice("Który pojazd chcesz wypożyczyć?"));
         showRentedVehicles();
     }
 
@@ -57,8 +57,8 @@ public class VehiclesController {
         Scanner scanner = new Scanner(System.in);
         int vehicleId = scanner.nextInt();
         try {
-            Vehicle vehicle = vehicleResource.getVehicleDetails(vehicleId, vehicleResource.getAvailableVehicles());
-            vehiclesView.showVehicleDetails(vehicle);
+//            Vehicle vehicle = vehicleResource.getVehicleDetails(vehicleId, vehicleResource.getAvailableVehicles());
+//            vehiclesView.showVehicleDetails(vehicle);
         } catch (NullPointerException e) {
             System.out.println("Nothing to show");
         }
@@ -66,7 +66,7 @@ public class VehiclesController {
 
     public void returnOfTheVehicle () {
         int vehicleId = getUserChoice("Zwrot pojazdu");
-        vehicleResource.returnOfTheVehicle(vehicleId);
+//        vehicleResource.returnTheVehicle(vehicleId);
     }
 
     public void exampleVehicles() {

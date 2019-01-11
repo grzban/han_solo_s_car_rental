@@ -1,14 +1,18 @@
 package pl.gb.edu.codecool.model.vehicle;
 
+import pl.gb.edu.codecool.model.exception.FailureToGetAVehicle;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleResource {
+
     private List<Vehicle> availableVehicles;
     private List<Vehicle> rentedVehicles;
+    private Vehicle vehicle;
 
     public VehicleResource() {
-        availableVehicles = new ArrayList();
+        availableVehicles = new ArrayList<>();
         rentedVehicles = new ArrayList<>();
     }
 
@@ -16,51 +20,43 @@ public class VehicleResource {
         availableVehicles.add(vehicle);
     }
 
-    public void removeVehicle(int vehicleId) {
-        try {
-            Vehicle vehicle = getVehicleById(vehicleId, getAvailableVehicles());
+    public void removeVehicle(int vehicleId) throws FailureToGetAVehicle {
+        vehicle = getVehicleById(vehicleId, availableVehicles);
+        if (vehicle != null) {
             availableVehicles.remove(vehicle);
-        } catch (NullPointerException e) {
-            System.out.println("Nothing to remove");
+        } else {
+            throw new FailureToGetAVehicle("Missing vehicle to remove");
         }
     }
 
-    public void returnOfTheVehicle(int vehicleId) {
-        try {
-            Vehicle vehicle = getVehicleById(vehicleId, getRentedVehicles());
-            getRentedVehicles().remove(vehicle);
-            getAvailableVehicles().add(vehicle);
-        } catch (NullPointerException e) {
-            System.out.println("Nie można zwrócić pojazdu");
+    public void returnTheVehicle(int vehicleId) throws FailureToGetAVehicle {
+        vehicle = getVehicleById(vehicleId, rentedVehicles);
+        if (vehicle != null) {
+            rentedVehicles.remove(vehicle);
+            availableVehicles.add(vehicle);
+        } else {
+            throw new FailureToGetAVehicle("Missing vehicle to return");
         }
     }
 
-    public void rentTheVehicle(int vehicleId) {
-        try {
-            Vehicle vehicle = getVehicleById(vehicleId, getAvailableVehicles());
+    public void rentTheVehicle(int vehicleId) throws FailureToGetAVehicle {
+        vehicle = getVehicleById(vehicleId, availableVehicles);
+        if (vehicle != null) {
             availableVehicles.remove(vehicle);
             rentedVehicles.add(vehicle);
-        } catch (NullPointerException e) {
-            System.out.println("Nothing to rent");
+        } else {
+            throw new FailureToGetAVehicle("Missing vehicle to rent");
         }
     }
 
-    public Vehicle getVehicleDetails(int vehicleId, List<Vehicle> vehiclesList) {
-        try {
-            return getVehicleById(vehicleId, vehiclesList);
-        } catch (NullPointerException e) {
-            System.out.println("The vehicle isn't available.");
-        }
-        throw new NullPointerException();
-    }
+    public Vehicle getVehicleById(int vehicleId, List<Vehicle> vehicles) {
 
-    private Vehicle getVehicleById(int vehicleId, List<Vehicle> vehiclesList) {
-        for (Vehicle vehicle : vehiclesList) {
-            if (vehicle.getVehicleId() == vehicleId) {
-                return vehicle;
+        for (Vehicle v : vehicles) {
+            if (v.getVehicleId() == vehicleId) {
+                vehicle = v;
             }
         }
-        throw new NullPointerException();
+        return vehicle;
     }
 
     public List<Vehicle> getAvailableVehicles() {
