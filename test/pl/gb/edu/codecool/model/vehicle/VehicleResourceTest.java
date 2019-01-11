@@ -10,7 +10,7 @@ import pl.gb.edu.codecool.model.exception.FailureToGetAVehicle;
 
 import java.util.Date;
 
-class VehicleVehicleResourceTest {
+class VehicleResourceTest {
 
     private VehicleResource vehicleResource;
     private Vehicle vehicle1;
@@ -61,6 +61,20 @@ class VehicleVehicleResourceTest {
         Assertions.assertSame(vehicle1, vehicleResource.getVehicleById(1, vehicleResource.getRentedVehicles()));
         Assertions.assertEquals(1, vehicleResource.getRentedVehicles().size());
         Assertions.assertEquals(1, vehicleResource.getAvailableVehicles().size());
+    }
+
+    @Test
+    void returnTheVehicle() {
+        Assertions.assertEquals(2, vehicleResource.getAvailableVehicles().size());
+        Assertions.assertEquals(0, vehicleResource.getRentedVehicles().size());
+        try {
+            vehicleResource.rentTheVehicle(1);
+            vehicleResource.returnTheVehicle(1);
+        } catch (FailureToGetAVehicle e) {
+            e.getMessage();
+        }
+        Assertions.assertEquals(2, vehicleResource.getAvailableVehicles().size());
+        Assertions.assertEquals(0, vehicleResource.getRentedVehicles().size());
     }
 
     @Test
