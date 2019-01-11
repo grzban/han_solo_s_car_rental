@@ -2,7 +2,7 @@ package pl.gb.edu.codecool.controller;
 
 import pl.gb.edu.codecool.model.enums.Models;
 import pl.gb.edu.codecool.model.enums.Type;
-import pl.gb.edu.codecool.model.vehicle.Vehicles;
+import pl.gb.edu.codecool.model.vehicle.VehicleResource;
 import pl.gb.edu.codecool.model.vehicle.Vehicle;
 import pl.gb.edu.codecool.view.VehiclesView;
 
@@ -11,30 +11,30 @@ import java.util.Scanner;
 
 public class VehiclesController {
 
-    private Vehicles vehicles;
+    private VehicleResource vehicleResource;
     private VehiclesView vehiclesView;
 
-    public VehiclesController(Vehicles vehicles, VehiclesView vehiclesView) {
-        this.vehicles = vehicles;
+    public VehiclesController(VehicleResource vehicleResource, VehiclesView vehiclesView) {
+        this.vehicleResource = vehicleResource;
         this.vehiclesView = vehiclesView;
         exampleVehicles();
     }
 
     public void showAvailableVehicles() {
-        vehiclesView.showVehicles(vehicles.getAvailableVehicles());
+        vehiclesView.showVehicles(vehicleResource.getAvailableVehicles());
     }
 
     public void showRentedVehicles() {
-        vehiclesView.showVehicles(vehicles.getRentedVehicles());
+        vehiclesView.showVehicles(vehicleResource.getRentedVehicles());
     }
 
     public void removeVehicle() {
-        vehicles.removeVehicle(getUserChoice("Który pojazd chcesz usunąć?"));
+        vehicleResource.removeVehicle(getUserChoice("Który pojazd chcesz usunąć?"));
         showAvailableVehicles();
     }
 
     public void rentTheVehicle() {
-        vehicles.rentTheVehicle(getUserChoice("Który pojazd chcesz wypożyczyć?"));
+        vehicleResource.rentTheVehicle(getUserChoice("Który pojazd chcesz wypożyczyć?"));
         showRentedVehicles();
     }
 
@@ -57,7 +57,7 @@ public class VehiclesController {
         Scanner scanner = new Scanner(System.in);
         int vehicleId = scanner.nextInt();
         try {
-            Vehicle vehicle = vehicles.getVehicleDetails(vehicleId, vehicles.getAvailableVehicles());
+            Vehicle vehicle = vehicleResource.getVehicleDetails(vehicleId, vehicleResource.getAvailableVehicles());
             vehiclesView.showVehicleDetails(vehicle);
         } catch (NullPointerException e) {
             System.out.println("Nothing to show");
@@ -66,7 +66,7 @@ public class VehiclesController {
 
     public void returnOfTheVehicle () {
         int vehicleId = getUserChoice("Zwrot pojazdu");
-        vehicles.returnOfTheVehicle(vehicleId);
+        vehicleResource.returnOfTheVehicle(vehicleId);
     }
 
     public void exampleVehicles() {
@@ -79,7 +79,7 @@ public class VehiclesController {
         vehicle.setAmountOfFuel(100);
         vehicle.setDateOfProduction(new Date(1287784800000l));
 
-        vehicles.addVehicle(vehicle);
+        vehicleResource.addVehicle(vehicle);
 
         vehicle = new Vehicle();
         vehicle.setVehicleId(2);
@@ -90,6 +90,6 @@ public class VehiclesController {
         vehicle.setAmountOfFuel(1000);
         vehicle.setDateOfProduction(new Date(1287794800000l));
 
-        vehicles.addVehicle(vehicle);
+        vehicleResource.addVehicle(vehicle);
     }
 }

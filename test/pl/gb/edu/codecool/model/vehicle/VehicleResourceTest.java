@@ -9,15 +9,13 @@ import pl.gb.edu.codecool.model.enums.Type;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+class VehicleResourceTest {
 
-class VehiclesTest {
-
-    private Vehicles vehicles;
+    private VehicleResource vehicleResource;
 
     @BeforeEach
     void setUp() {
-        vehicles = new Vehicles();
+        vehicleResource = new VehicleResource();
     }
 
     @AfterEach
@@ -26,22 +24,22 @@ class VehiclesTest {
 
     @Test
     void addVehicle() {
-        vehicles.addVehicle(createVehicle1());
-        vehicles.addVehicle(createVehicle2());
-        Assertions.assertEquals(2, vehicles.getAvailableVehicles().size());
+        vehicleResource.addVehicle(createVehicle1());
+        vehicleResource.addVehicle(createVehicle2());
+        Assertions.assertEquals(2, vehicleResource.getAvailableVehicles().size());
     }
 
     @Test
     void removeVehicle() {
-        vehicles.addVehicle(createVehicle1());
-        vehicles.addVehicle(createVehicle2());
-        vehicles.removeVehicle(1);
-        Assertions.assertEquals(1, vehicles.getAvailableVehicles().size());
+        vehicleResource.addVehicle(createVehicle1());
+        vehicleResource.addVehicle(createVehicle2());
+        vehicleResource.removeVehicle(1);
+        Assertions.assertEquals(1, vehicleResource.getAvailableVehicles().size());
     }
 
     @Test
     void returnOfTheVehicle() {
-        vehicles.addVehicle(createVehicle1());
+        vehicleResource.addVehicle(createVehicle1());
     }
 
     @Test
@@ -51,9 +49,9 @@ class VehiclesTest {
 
     @Test
     void getVehicleDetails() {
-        vehicles.addVehicle(createVehicle1());
-        vehicles.addVehicle(createVehicle2());
-        Assertions.assertSame(createVehicle1(), vehicles.getVehicleDetails(1,vehicles.getAvailableVehicles()));
+        vehicleResource.addVehicle(createVehicle1());
+        vehicleResource.addVehicle(createVehicle2());
+        Assertions.assertSame(createVehicle1(), vehicleResource.getVehicleDetails(1, vehicleResource.getAvailableVehicles()));
     }
 
     @Test

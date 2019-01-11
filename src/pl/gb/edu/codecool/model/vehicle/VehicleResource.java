@@ -3,11 +3,11 @@ package pl.gb.edu.codecool.model.vehicle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vehicles {
+public class VehicleResource {
     private List<Vehicle> availableVehicles;
     private List<Vehicle> rentedVehicles;
 
-    public Vehicles() {
+    public VehicleResource() {
         availableVehicles = new ArrayList();
         rentedVehicles = new ArrayList<>();
     }

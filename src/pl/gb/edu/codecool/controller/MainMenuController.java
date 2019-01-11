@@ -1,6 +1,6 @@
 package pl.gb.edu.codecool.controller;
 
-import pl.gb.edu.codecool.model.vehicle.Vehicles;
+import pl.gb.edu.codecool.model.vehicle.VehicleResource;
 import pl.gb.edu.codecool.view.Menus;
 import pl.gb.edu.codecool.view.VehiclesView;
 
@@ -11,16 +11,16 @@ public class MainMenuController {
     private Menus menus;
     private MenuController menuController;
     private VehiclesController vehiclesController;
-    private Vehicles vehicles;
+    private VehicleResource vehicleResource;
     private VehiclesView vehiclesView;
 
     public MainMenuController(Menus menus) {
         this.menus = menus;
         menus.printMainMenu();
         menuController = new MenuController();
-        vehicles = new Vehicles();
+        vehicleResource = new VehicleResource();
         vehiclesView = new VehiclesView();
-        vehiclesController = new VehiclesController(vehicles, vehiclesView);
+        vehiclesController = new VehiclesController(vehicleResource, vehiclesView);
     }
 
     public void addMainMenuHandler() {

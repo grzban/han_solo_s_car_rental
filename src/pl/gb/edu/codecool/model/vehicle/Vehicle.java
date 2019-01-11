@@ -30,15 +30,14 @@ public class Vehicle {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Vehicle)) return false;
         Vehicle vehicle = (Vehicle) o;
-        return getVehicleId() == vehicle.getVehicleId() &&
+        return
+                getVehicleId() == vehicle.getVehicleId() &&
                 getMileageOfTheVehicle() == vehicle.getMileageOfTheVehicle() &&
                 getAmountOfFuel() == vehicle.getAmountOfFuel() &&
-                Objects.equals(getName(), vehicle.getName()) &&
+                getName() == vehicle.getName() &&
                 getModels() == vehicle.getModels() &&
-                Objects.equals(getDateOfProduction(), vehicle.getDateOfProduction()) &&
+                getDateOfProduction() == vehicle.getDateOfProduction() &&
                 getVehicleType() == vehicle.getVehicleType();
     }
 
