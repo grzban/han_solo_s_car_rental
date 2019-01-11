@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.gb.edu.codecool.model.enums.Models;
+import pl.gb.edu.codecool.model.enums.Place;
 import pl.gb.edu.codecool.model.enums.Type;
 import pl.gb.edu.codecool.model.exception.FailureToGetAVehicle;
 
@@ -21,8 +22,8 @@ class VehicleResourceTest {
         vehicleResource = new VehicleResource();
         vehicle1 = createVehicle1();
         vehicle2 = createVehicle2();
-        vehicleResource.addVehicle(vehicle1);
-        vehicleResource.addVehicle(vehicle2);
+        vehicleResource.addVehicle(vehicle1, Place.PARKING);
+        vehicleResource.addVehicle(vehicle2, Place.EXHIBITION);
     }
 
     @AfterEach
@@ -46,11 +47,6 @@ class VehicleResourceTest {
     }
 
     @Test
-    void returnOfTheVehicle() {
-        vehicleResource.addVehicle(createVehicle1());
-    }
-
-    @Test
     void rentTheVehicle() {
         try {
             vehicleResource.rentTheVehicle(1);
@@ -69,7 +65,7 @@ class VehicleResourceTest {
         Assertions.assertEquals(0, vehicleResource.getRentedVehicles().size());
         try {
             vehicleResource.rentTheVehicle(1);
-            vehicleResource.returnTheVehicle(1);
+            vehicleResource.returnTheVehicle(1, Place.PARKING);
         } catch (FailureToGetAVehicle e) {
             e.getMessage();
         }
@@ -84,12 +80,12 @@ class VehicleResourceTest {
     }
 
     private Vehicle createVehicle1() {
-        Vehicle vehicle = new Vehicle(1, "Vehicle 1", Models.MODEL_1, new Date(1287784800000l), 3000, Type.FLYING_FIGHTER, 1000);
+        Vehicle vehicle = new Vehicle(1, "Vehicle 1", Models.MODEL_1, new Date(1287784800000l), 3000, Type.FLYING_FIGHTER, 1000, Place.EXHIBITION);
         return vehicle;
     }
 
     private Vehicle createVehicle2() {
-        Vehicle vehicle = new Vehicle(2, "Vehicle 2", Models.MODEL_2, new Date(1287784700000l), 7000, Type.GROUND_RIDING, 1000);
+        Vehicle vehicle = new Vehicle(2, "Vehicle 2", Models.MODEL_2, new Date(1287784700000l), 7000, Type.GROUND_RIDING, 1000, Place.PARKING);
         return vehicle;
     }
 }

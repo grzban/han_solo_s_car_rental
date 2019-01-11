@@ -1,5 +1,6 @@
 package pl.gb.edu.codecool.model.vehicle;
 
+import pl.gb.edu.codecool.model.enums.Place;
 import pl.gb.edu.codecool.model.exception.FailureToGetAVehicle;
 
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public class VehicleResource {
         rentedVehicles = new ArrayList<>();
     }
 
-    public void addVehicle(Vehicle vehicle) {
+    public void addVehicle(Vehicle vehicle, Place place) {
+        vehicle.setPlace(place);
         availableVehicles.add(vehicle);
     }
 
@@ -29,10 +31,11 @@ public class VehicleResource {
         }
     }
 
-    public void returnTheVehicle(int vehicleId) throws FailureToGetAVehicle {
+    public void returnTheVehicle(int vehicleId, Place place) throws FailureToGetAVehicle {
         vehicle = getVehicleById(vehicleId, rentedVehicles);
         if (vehicle != null) {
             rentedVehicles.remove(vehicle);
+            vehicle.setPlace(place);
             availableVehicles.add(vehicle);
         } else {
             throw new FailureToGetAVehicle("Missing vehicle to return");
@@ -43,6 +46,7 @@ public class VehicleResource {
         vehicle = getVehicleById(vehicleId, availableVehicles);
         if (vehicle != null) {
             availableVehicles.remove(vehicle);
+            vehicle.setPlace(Place.RENTED);
             rentedVehicles.add(vehicle);
         } else {
             throw new FailureToGetAVehicle("Missing vehicle to rent");
@@ -50,7 +54,6 @@ public class VehicleResource {
     }
 
     public Vehicle getVehicleById(int vehicleId, List<Vehicle> vehicles) {
-
         for (Vehicle v : vehicles) {
             if (v.getVehicleId() == vehicleId) {
                 vehicle = v;

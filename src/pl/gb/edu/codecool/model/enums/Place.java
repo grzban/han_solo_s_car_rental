@@ -1,6 +1,7 @@
 package pl.gb.edu.codecool.model.enums;
 
-public enum Places {
+public enum Place {
     EXHIBITION,
-    PARKING
+    PARKING,
+    RENTED
 }

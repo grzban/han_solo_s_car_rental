@@ -1,6 +1,7 @@
 package pl.gb.edu.codecool.controller;
 
 import pl.gb.edu.codecool.model.enums.Models;
+import pl.gb.edu.codecool.model.enums.Place;
 import pl.gb.edu.codecool.model.enums.Type;
 import pl.gb.edu.codecool.model.vehicle.VehicleResource;
 import pl.gb.edu.codecool.model.vehicle.Vehicle;
@@ -28,17 +29,18 @@ public class VehiclesController {
         vehiclesView.showVehicles(vehicleResource.getRentedVehicles());
     }
 
+    //TODO
     public void removeVehicle() {
 //        vehicleResource.removeVehicle(getUserChoice("Który pojazd chcesz usunąć?"));
         showAvailableVehicles();
     }
-
+//    TODO
     public void rentTheVehicle() {
 //        vehicleResource.rentTheVehicle(getUserChoice("Który pojazd chcesz wypożyczyć?"));
         showRentedVehicles();
     }
 
-
+//TODO przenieść do view
     public int getUserChoice(String message) {
         System.out.println(message);
 
@@ -53,6 +55,7 @@ public class VehiclesController {
         }
     }
 
+    //TODO
     public void showVehicleDetails() {
         Scanner scanner = new Scanner(System.in);
         int vehicleId = scanner.nextInt();
@@ -64,10 +67,12 @@ public class VehiclesController {
         }
     }
 
+    //TODO
     public void returnOfTheVehicle () {
         int vehicleId = getUserChoice("Zwrot pojazdu");
 //        vehicleResource.returnTheVehicle(vehicleId);
     }
+
 
     public void exampleVehicles() {
         Vehicle vehicle = new Vehicle();
@@ -79,7 +84,7 @@ public class VehiclesController {
         vehicle.setAmountOfFuel(100);
         vehicle.setDateOfProduction(new Date(1287784800000l));
 
-        vehicleResource.addVehicle(vehicle);
+        vehicleResource.addVehicle(vehicle, Place.PARKING);
 
         vehicle = new Vehicle();
         vehicle.setVehicleId(2);
@@ -90,6 +95,6 @@ public class VehiclesController {
         vehicle.setAmountOfFuel(1000);
         vehicle.setDateOfProduction(new Date(1287794800000l));
 
-        vehicleResource.addVehicle(vehicle);
+        vehicleResource.addVehicle(vehicle, Place.EXHIBITION);
     }
 }

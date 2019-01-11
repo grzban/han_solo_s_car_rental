@@ -1,6 +1,7 @@
 package pl.gb.edu.codecool.model.vehicle;
 
 import pl.gb.edu.codecool.model.enums.Models;
+import pl.gb.edu.codecool.model.enums.Place;
 import pl.gb.edu.codecool.model.enums.Type;
 
 import java.util.Date;
@@ -14,11 +15,12 @@ public class Vehicle {
     private int mileageOfTheVehicle;
     private Type vehicleType;
     private int amountOfFuel;
+    private Place place;
 
     public Vehicle() {
     }
 
-    public Vehicle(int vehicleId, String name, Models models, Date dateOfProduction, int mileageOfTheVehicle, Type vehicleType, int amountOfFuel) {
+    public Vehicle(int vehicleId, String name, Models models, Date dateOfProduction, int mileageOfTheVehicle, Type vehicleType, int amountOfFuel, Place place) {
         this.vehicleId = vehicleId;
         this.name = name;
         this.models = models;
@@ -26,6 +28,7 @@ public class Vehicle {
         this.mileageOfTheVehicle = mileageOfTheVehicle;
         this.vehicleType = vehicleType;
         this.amountOfFuel = amountOfFuel;
+        this.place = place;
     }
 
     @Override
@@ -38,7 +41,8 @@ public class Vehicle {
                 getName() == vehicle.getName() &&
                 getModels() == vehicle.getModels() &&
                 getDateOfProduction() == vehicle.getDateOfProduction() &&
-                getVehicleType() == vehicle.getVehicleType();
+                getVehicleType() == vehicle.getVehicleType() &&
+                getPlace() == vehicle.getPlace();
     }
 
     @Override
@@ -102,6 +106,14 @@ public class Vehicle {
         this.amountOfFuel = amountOfFuel;
     }
 
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -118,6 +130,8 @@ public class Vehicle {
         result.append("\tDate of production:\t" + getDateOfProduction());
         result.append("\n");
         result.append("\tMileage Of The Vehicle:\t" + getMileageOfTheVehicle());
+        result.append("\n");
+        result.append("\tActual place:\t" + getPlace());
 
         return result.toString();
     }
