@@ -1,16 +1,19 @@
 package pl.gb.edu.codecool;
 
-import pl.gb.edu.codecool.controller.MainMenuController;
-import pl.gb.edu.codecool.view.Menus;
+import pl.gb.edu.codecool.model.vehicle.VehicleResource;
+import pl.gb.edu.codecool.view.MainMenuView;
+
 
 public class Run {
 
     public static void main(String[] args) {
 
-        Menus menus = new Menus();
-        MainMenuController mainMenuController = new MainMenuController(menus);
+        VehicleResource vehicleResource = new VehicleResource();
+        MainMenuView mainMenuView = new MainMenuView(vehicleResource);
+
         while (true) {
-            mainMenuController.addMainMenuHandler();
+            mainMenuView.printMainMenu();
+            mainMenuView.mainMenuHandler();
         }
     }
 }

@@ -11,10 +11,15 @@ public class VehicleResource {
     private List<Vehicle> availableVehicles;
     private List<Vehicle> rentedVehicles;
     private Vehicle vehicle;
+    private ExamplVehicle examplVehicle;
 
     public VehicleResource() {
         availableVehicles = new ArrayList<>();
         rentedVehicles = new ArrayList<>();
+        examplVehicle = new ExamplVehicle();
+
+        availableVehicles.add(examplVehicle.example1());
+        availableVehicles.add(examplVehicle.example2());
     }
 
     public void addVehicle(Vehicle vehicle, Place place) {
@@ -31,7 +36,7 @@ public class VehicleResource {
         }
     }
 
-    public void returnTheVehicle(int vehicleId, Place place) throws FailureToGetAVehicle {
+    void returnTheVehicle(int vehicleId, Place place) throws FailureToGetAVehicle {
         vehicle = getVehicleById(vehicleId, rentedVehicles);
         if (vehicle != null) {
             rentedVehicles.remove(vehicle);
@@ -42,7 +47,7 @@ public class VehicleResource {
         }
     }
 
-    public void rentTheVehicle(int vehicleId) throws FailureToGetAVehicle {
+    void rentTheVehicle(int vehicleId) throws FailureToGetAVehicle {
         vehicle = getVehicleById(vehicleId, availableVehicles);
         if (vehicle != null) {
             availableVehicles.remove(vehicle);
@@ -62,11 +67,21 @@ public class VehicleResource {
         return vehicle;
     }
 
+    public Vehicle getAvailableVehicleById(int vehicleId) throws FailureToGetAVehicle {
+        Vehicle vehicle = getVehicleById(vehicleId, getAvailableVehicles());
+        if (vehicle != null ) {
+            return vehicle;
+        } else {
+            throw new FailureToGetAVehicle("Missing vehicle. I can't show details");
+        }
+    }
+
     public List<Vehicle> getAvailableVehicles() {
         return availableVehicles;
     }
 
-    public List<Vehicle> getRentedVehicles() {
+    List<Vehicle> getRentedVehicles() {
         return rentedVehicles;
     }
+
 }

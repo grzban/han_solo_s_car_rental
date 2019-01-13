@@ -17,9 +17,6 @@ public class Vehicle {
     private int amountOfFuel;
     private Place place;
 
-    public Vehicle() {
-    }
-
     public Vehicle(int vehicleId, String name, Models models, Date dateOfProduction, int mileageOfTheVehicle, Type vehicleType, int amountOfFuel, Place place) {
         this.vehicleId = vehicleId;
         this.name = name;
@@ -47,7 +44,7 @@ public class Vehicle {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getVehicleId(), getName(), getModels(), getDateOfProduction(), getMileageOfTheVehicle(), getVehicleType(), getAmountOfFuel());
+        return Objects.hash(getVehicleId(), getName(), getModels(), getDateOfProduction(), getMileageOfTheVehicle(), getVehicleType(), getAmountOfFuel(), getPlace());
     }
 
     public int getVehicleId() {
