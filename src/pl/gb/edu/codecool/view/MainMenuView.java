@@ -54,12 +54,7 @@ public class MainMenuView {
                 System.out.println("3. usunięcie pojazdu z listy dostępnych pojazdów");
                 showVehicles();
                 System.out.println("Podaj id pojazdu który chcesz usunąć:");
-                int vehicleId = getVehicleId();
-                try {
-                    vehicleResource.removeVehicle(vehicleId);
-                } catch (FailureToGetAVehicle failureToGetAVehicle) {
-                    System.out.println(failureToGetAVehicle.getMessage());
-                }
+                removeVehicle();
                 break;
             case "4":
                 clearConsole();
@@ -137,6 +132,15 @@ public class MainMenuView {
         int vehicleId = getVehicleId();
         try {
             showVehicleDetails(vehicleResource.getAvailableVehicleById(vehicleId));
+        } catch (FailureToGetAVehicle e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void removeVehicle() {
+        int vehicleId = getVehicleId();
+        try {
+            vehicleResource.removeVehicle(vehicleId);
         } catch (FailureToGetAVehicle e) {
             System.out.println(e.getMessage());
         }
