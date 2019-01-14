@@ -1,5 +1,6 @@
 package pl.gb.edu.codecool.view;
 
+import pl.gb.edu.codecool.model.enums.Place;
 import pl.gb.edu.codecool.model.exception.FailureToGetAVehicle;
 import pl.gb.edu.codecool.model.vehicle.Vehicle;
 import pl.gb.edu.codecool.model.vehicle.VehicleResource;
@@ -76,7 +77,14 @@ public class MainMenuView {
                 break;
             case "6":
                 System.out.println("6. zwrot pojazdu");
-//                vehiclesController.returnOfTheVehicle();
+                System.out.println("Wypożyczone pojazdy");
+                showRentedVehicles();
+                System.out.println("Podaj id pojazdu, który chcesz zwrócić?");
+                returnTheVehicle();
+                System.out.println("Dostępne pojazdy");
+                showAvailableVehicles();
+                System.out.println("Wypożyczone pojazdy");
+                showRentedVehicles();
                 break;
             default:
                 System.out.println("Wybierz inną opcję");
@@ -159,6 +167,17 @@ public class MainMenuView {
         int vehicleId = getVehicleId();
         try {
             vehicleResource.rentTheVehicle(vehicleId);
+        } catch (FailureToGetAVehicle e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void returnTheVehicle() {
+        int vehicleId = getVehicleId();
+        System.out.println("W jakiej lokalizacji znajduje się pojazd?");
+
+        try {
+            vehicleResource.returnTheVehicle(vehicleId, Place.EXHIBITION);
         } catch (FailureToGetAVehicle e) {
             System.out.println(e.getMessage());
         }
