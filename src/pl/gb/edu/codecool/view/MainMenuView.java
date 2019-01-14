@@ -44,7 +44,7 @@ public class MainMenuView {
                 break;
             case "1":
                 System.out.println("1. lista obecnie dostępnych pojazdów");
-                showVehicles();
+                showAvailableVehicles();
                 break;
             case "2":
                 System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
@@ -52,21 +52,27 @@ public class MainMenuView {
             case "3":
                 clearConsole();
                 System.out.println("3. usunięcie pojazdu z listy dostępnych pojazdów");
-                showVehicles();
+                showAvailableVehicles();
                 System.out.println("Podaj id pojazdu który chcesz usunąć:");
                 removeVehicle();
                 break;
             case "4":
                 clearConsole();
                 System.out.println("4. szczegóły pojazdu");
-                showVehicles();
+                showAvailableVehicles();
                 System.out.println("Podaj id pojazdu który chcesz usunąć:");
                 showVehicleDetails();
                 break;
             case "5":
+                clearConsole();
                 System.out.println("5. wypożyczanie pojazdu");
-//                showAvailableVehicles();
-//                vehiclesController.rentTheVehicle();
+                showAvailableVehicles();
+                System.out.println("Podaj id pojazdu który chcesz wypożyczyć");
+                rentTheVehicle();
+                System.out.println("Dostępne pojazdy");
+                showAvailableVehicles();
+                System.out.println("Wypożyczone pojazdy");
+                showRentedVehicles();
                 break;
             case "6":
                 System.out.println("6. zwrot pojazdu");
@@ -78,10 +84,13 @@ public class MainMenuView {
         }
     }
 
-    private void showVehicles() {
-        showVehicles(vehicleResource.getAvailableVehicles());
+    private void showAvailableVehicles() {
+        showAvailableVehicles(vehicleResource.getAvailableVehicles());
     }
 
+    private void showRentedVehicles() {
+        showAvailableVehicles(vehicleResource.getRentedVehicles());
+    }
 
     private String getUserChoice() {
         Scanner scanner = new Scanner(System.in);
@@ -107,7 +116,7 @@ public class MainMenuView {
     }
 
 
-    private void showVehicles(List<Vehicle> vehicles) {
+    private void showAvailableVehicles(List<Vehicle> vehicles) {
         Iterator<Vehicle> allVehicles = vehicles.listIterator();
         if (allVehicles.hasNext()) {
             System.out.println("+--------------------------------------------------------------+");
@@ -141,6 +150,15 @@ public class MainMenuView {
         int vehicleId = getVehicleId();
         try {
             vehicleResource.removeVehicle(vehicleId);
+        } catch (FailureToGetAVehicle e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void rentTheVehicle() {
+        int vehicleId = getVehicleId();
+        try {
+            vehicleResource.rentTheVehicle(vehicleId);
         } catch (FailureToGetAVehicle e) {
             System.out.println(e.getMessage());
         }

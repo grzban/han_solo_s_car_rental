@@ -36,7 +36,7 @@ public class VehicleResource {
         }
     }
 
-    void returnTheVehicle(int vehicleId, Place place) throws FailureToGetAVehicle {
+    public void returnTheVehicle(int vehicleId, Place place) throws FailureToGetAVehicle {
         vehicle = getVehicleById(vehicleId, rentedVehicles);
         if (vehicle != null) {
             rentedVehicles.remove(vehicle);
@@ -47,7 +47,7 @@ public class VehicleResource {
         }
     }
 
-    void rentTheVehicle(int vehicleId) throws FailureToGetAVehicle {
+    public void rentTheVehicle(int vehicleId) throws FailureToGetAVehicle {
         vehicle = getVehicleById(vehicleId, availableVehicles);
         if (vehicle != null) {
             availableVehicles.remove(vehicle);
@@ -80,7 +80,7 @@ public class VehicleResource {
         return availableVehicles;
     }
 
-    List<Vehicle> getRentedVehicles() {
+    public List<Vehicle> getRentedVehicles() {
         return rentedVehicles;
     }
 
