@@ -107,7 +107,7 @@ public class MainMenuView {
     }
 
     private void closeApplication() {
-        System.out.println("Na dziś kończymy. Pa!");
+        System.out.println("No to kończymy! Pa!");
         System.exit(0);
     }
 
