@@ -26,10 +26,10 @@ public class ExampleVehicle {
                 2,
                 "Vehicle 2",
                 Model.MODEL_2,
-                new Date(1287784800000l),
+                new Date(1297784800000l),
                 3000,
                 Type.GROUND_RIDING,
                 100,
-                Place.EXHIBITION);
+                Place.PARKING);
     }
 }

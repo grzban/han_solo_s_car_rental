@@ -1,8 +1,9 @@
 package pl.gb.edu.codecool;
 
-import pl.gb.edu.codecool.enums.Place;
+import pl.gb.edu.codecool.controller.AvailableVehiclesController;
 import pl.gb.edu.codecool.resource.ExampleVehicle;
 import pl.gb.edu.codecool.resource.VehicleRentResource;
+import pl.gb.edu.codecool.view.AvailableVehiclesView;
 
 
 public class Run {
@@ -13,16 +14,10 @@ public class Run {
         vehicleRentResource.getAvailableVehicleResource().addVehicle(exampleVehicle.example1());
         vehicleRentResource.getAvailableVehicleResource().addVehicle(exampleVehicle.example2());
 
-        System.out.println(vehicleRentResource);
+        AvailableVehiclesView availableVehiclesView = new AvailableVehiclesView();
 
-        vehicleRentResource.rentVehicle(1);
+        AvailableVehiclesController availableVehiclesController = new AvailableVehiclesController(vehicleRentResource, availableVehiclesView);
+        availableVehiclesController.showAvalableVehicles();
 
-        System.out.println(vehicleRentResource);
-
-        vehicleRentResource.returnVehicle(1, Place.PARKING);
-        System.out.println(vehicleRentResource);
-
-
-        vehicleRentResource.rentVehicle(100);
     }
 }
