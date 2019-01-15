@@ -1,60 +1,53 @@
-package pl.gb.edu.codecool.model.vehicle;
-
-import pl.gb.edu.codecool.model.enums.Place;
-import pl.gb.edu.codecool.model.exception.FailureToGetAVehicle;
+package pl.gb.edu.codecool.resource;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class VehicleResource {
+public class AvailableVehicleResource extends VehicleResource {
 
-    private List<Vehicle> availableVehicles;
-    private List<Vehicle> rentedVehicles;
-    private Vehicle vehicle;
-    private ExamplVehicle examplVehicle;
-
-    public VehicleResource() {
-        availableVehicles = new ArrayList<>();
-        rentedVehicles = new ArrayList<>();
-        examplVehicle = new ExamplVehicle();
-
-        availableVehicles.add(examplVehicle.example1());
-        availableVehicles.add(examplVehicle.example2());
+    public AvailableVehicleResource() {
+        vehicles = new ArrayList<>();
     }
 
-    public void addVehicle(Vehicle vehicle, Place place) {
+    /*public void returnVehicle(int vehicleId) {
+        addVehicle();
+    }*/
+
+    /*public void rentVehicle(int vehicleId) {
+
+    }*/
+    /*public void addVehicle(Vehicle vehicle, Place place) {
         vehicle.setPlace(place);
         availableVehicles.add(vehicle);
     }
 
-    public void removeVehicle(int vehicleId) throws FailureToGetAVehicle {
+    public void removeVehicle(int vehicleId) throws VehicleNotExistsException {
         vehicle = getVehicleById(vehicleId, availableVehicles);
         if (vehicle != null) {
             availableVehicles.remove(vehicle);
         } else {
-            throw new FailureToGetAVehicle("Missing vehicle to remove");
+            throw new VehicleNotExistsException("Missing vehicle to remove");
         }
     }
 
-    public void returnTheVehicle(int vehicleId, Place place) throws FailureToGetAVehicle {
+    public void returnTheVehicle(int vehicleId, Place place) throws VehicleNotExistsException {
         vehicle = getVehicleById(vehicleId, rentedVehicles);
         if (vehicle != null) {
             rentedVehicles.remove(vehicle);
             vehicle.setPlace(place);
             availableVehicles.add(vehicle);
         } else {
-            throw new FailureToGetAVehicle("Missing vehicle to return");
+            throw new VehicleNotExistsException("Missing vehicle to return");
         }
     }
 
-    public void rentTheVehicle(int vehicleId) throws FailureToGetAVehicle {
+    public void rentTheVehicle(int vehicleId) throws VehicleNotExistsException {
         vehicle = getVehicleById(vehicleId, availableVehicles);
         if (vehicle != null) {
             availableVehicles.remove(vehicle);
             vehicle.setPlace(Place.RENTED);
             rentedVehicles.add(vehicle);
         } else {
-            throw new FailureToGetAVehicle("Missing vehicle to rent");
+            throw new VehicleNotExistsException("Missing vehicle to rent");
         }
     }
 
@@ -67,12 +60,12 @@ public class VehicleResource {
         return vehicle;
     }
 
-    public Vehicle getAvailableVehicleById(int vehicleId) throws FailureToGetAVehicle {
+    public Vehicle getAvailableVehicleById(int vehicleId) throws VehicleNotExistsException {
         Vehicle vehicle = getVehicleById(vehicleId, getAvailableVehicles());
         if (vehicle != null ) {
             return vehicle;
         } else {
-            throw new FailureToGetAVehicle("Missing vehicle. I can't show details");
+            throw new VehicleNotExistsException("Missing vehicle. I can't show details");
         }
     }
 
@@ -82,6 +75,6 @@ public class VehicleResource {
 
     public List<Vehicle> getRentedVehicles() {
         return rentedVehicles;
-    }
+    }*/
 
 }
