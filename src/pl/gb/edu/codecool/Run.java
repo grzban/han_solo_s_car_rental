@@ -1,5 +1,6 @@
 package pl.gb.edu.codecool;
 
+import pl.gb.edu.codecool.enums.Place;
 import pl.gb.edu.codecool.resource.ExampleVehicle;
 import pl.gb.edu.codecool.resource.VehicleRentResource;
 
@@ -18,7 +19,7 @@ public class Run {
 
         System.out.println(vehicleRentResource);
 
-        vehicleRentResource.returnVehicle(1, "PARKING");
+        vehicleRentResource.returnVehicle(1, Place.PARKING);
         System.out.println(vehicleRentResource);
 
 
