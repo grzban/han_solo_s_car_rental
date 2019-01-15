@@ -6,14 +6,14 @@ import java.util.Objects;
 public class Vehicle {
     private int vehicleId;
     private String name;
-    private Model model;
+    private String model;
     private Date dateOfProduction;
     private int mileageOfTheVehicle;
-    private Type type;
+    private String type;
     private int amountOfFuel;
-    private Place place;
+    private String place;
 
-    public Vehicle(int vehicleId, String name, Model model, Date dateOfProduction, int mileageOfTheVehicle, Type type, int amountOfFuel, Place place) {
+    public Vehicle(int vehicleId, String name, String model, Date dateOfProduction, int mileageOfTheVehicle, String type, int amountOfFuel, String place) {
         this.vehicleId = vehicleId;
         this.name = name;
         this.model = model;
