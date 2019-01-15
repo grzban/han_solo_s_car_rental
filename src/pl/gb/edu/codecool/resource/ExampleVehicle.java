@@ -1,5 +1,8 @@
 package pl.gb.edu.codecool.resource;
 
+import pl.gb.edu.codecool.enums.Model;
+import pl.gb.edu.codecool.enums.Place;
+import pl.gb.edu.codecool.enums.Type;
 import pl.gb.edu.codecool.model.Vehicle;
 
 import java.util.Date;
@@ -10,23 +13,23 @@ public class ExampleVehicle {
         return new Vehicle(
                 1,
                 "Vehicle 1",
-                "MODEL 1",
+                Model.MODEL_1,
                 new Date(1287784800000l),
                 3000,
-                "GROUND_RIDING",
+                Type.FLYING_FIGHTER,
                 100,
-                "PARKING");
+                Place.EXHIBITION);
     }
 
     public Vehicle example2() {
         return new Vehicle(
                 2,
                 "Vehicle 2",
-                "MODEL 2",
+                Model.MODEL_2,
                 new Date(1287784800000l),
                 3000,
-                "FLYING_FIGHTER",
+                Type.GROUND_RIDING,
                 100,
-                "EXHIBITION");
+                Place.EXHIBITION);
     }
 }

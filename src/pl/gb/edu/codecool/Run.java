@@ -1,19 +1,27 @@
 package pl.gb.edu.codecool;
 
-import pl.gb.edu.codecool.model.vehicle.VehicleResource;
-import pl.gb.edu.codecool.view.MainMenuView;
+import pl.gb.edu.codecool.resource.ExampleVehicle;
+import pl.gb.edu.codecool.resource.VehicleRentResource;
 
 
 public class Run {
 
     public static void main(String[] args) {
+        VehicleRentResource vehicleRentResource = new VehicleRentResource();
+        ExampleVehicle exampleVehicle = new ExampleVehicle();
+        vehicleRentResource.getAvailableVehicleResource().addVehicle(exampleVehicle.example1());
+        vehicleRentResource.getAvailableVehicleResource().addVehicle(exampleVehicle.example2());
 
-        VehicleResource vehicleResource = new VehicleResource();
-        MainMenuView mainMenuView = new MainMenuView(vehicleResource);
+        System.out.println(vehicleRentResource);
 
-        while (true) {
-            mainMenuView.printMainMenu();
-            mainMenuView.mainMenuHandler();
-        }
+        vehicleRentResource.rentVehicle(1);
+
+        System.out.println(vehicleRentResource);
+
+        vehicleRentResource.returnVehicle(1, "PARKING");
+        System.out.println(vehicleRentResource);
+
+
+        vehicleRentResource.rentVehicle(100);
     }
 }

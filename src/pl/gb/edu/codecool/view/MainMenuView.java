@@ -1,9 +1,9 @@
 package pl.gb.edu.codecool.view;
 
-import pl.gb.edu.codecool.model.enums.Place;
-import pl.gb.edu.codecool.model.exception.FailureToGetAVehicle;
-import pl.gb.edu.codecool.model.vehicle.Vehicle;
-import pl.gb.edu.codecool.model.vehicle.VehicleResource;
+import pl.gb.edu.codecool.exception.VehicleNotExistsException;
+import pl.gb.edu.codecool.model.Model;
+import pl.gb.edu.codecool.model.Vehicle;
+import pl.gb.edu.codecool.resource.AvailableVehicleResource;
 
 import java.util.Iterator;
 import java.util.List;
@@ -11,10 +11,10 @@ import java.util.Scanner;
 
 public class MainMenuView {
 
-    private VehicleResource vehicleResource;
+    private AvailableVehicleResource vehicleResource;
     private Vehicle vehicle;
 
-    public MainMenuView(VehicleResource vehicleResource) {
+    public MainMenuView(AvailableVehicleResource vehicleResource) {
         this.vehicleResource = vehicleResource;
     }
 
@@ -34,7 +34,7 @@ public class MainMenuView {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-
+/*
     public void mainMenuHandler() {
 
         String choice = getUserChoice();
@@ -49,6 +49,8 @@ public class MainMenuView {
                 break;
             case "2":
                 System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
+                addVehicle();
+
                 break;
             case "3":
                 clearConsole();
@@ -90,9 +92,9 @@ public class MainMenuView {
                 System.out.println("Wybierz inną opcję");
                 break;
         }
-    }
+    }*/
 
-    private void showAvailableVehicles() {
+    /*private void showAvailableVehicles() {
         showAvailableVehicles(vehicleResource.getAvailableVehicles());
     }
 
@@ -123,7 +125,6 @@ public class MainMenuView {
         System.exit(0);
     }
 
-
     private void showAvailableVehicles(List<Vehicle> vehicles) {
         Iterator<Vehicle> allVehicles = vehicles.listIterator();
         if (allVehicles.hasNext()) {
@@ -149,7 +150,7 @@ public class MainMenuView {
         int vehicleId = getVehicleId();
         try {
             showVehicleDetails(vehicleResource.getAvailableVehicleById(vehicleId));
-        } catch (FailureToGetAVehicle e) {
+        } catch (VehicleNotExistsException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -158,7 +159,7 @@ public class MainMenuView {
         int vehicleId = getVehicleId();
         try {
             vehicleResource.removeVehicle(vehicleId);
-        } catch (FailureToGetAVehicle e) {
+        } catch (VehicleNotExistsException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -167,7 +168,7 @@ public class MainMenuView {
         int vehicleId = getVehicleId();
         try {
             vehicleResource.rentTheVehicle(vehicleId);
-        } catch (FailureToGetAVehicle e) {
+        } catch (VehicleNotExistsException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -178,8 +179,36 @@ public class MainMenuView {
 
         try {
             vehicleResource.returnTheVehicle(vehicleId, Place.EXHIBITION);
-        } catch (FailureToGetAVehicle e) {
+        } catch (VehicleNotExistsException e) {
             System.out.println(e.getMessage());
         }
     }
+
+    private void addVehicle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj nazwę pojazdu");
+        String name = scanner.next();
+
+
+        System.out.println("Podaj id modelu:");
+        showModels();
+        int modelId = getVehicleId();
+
+        *//*Date dateOfProduction,
+        int mileageOfTheVehicle,
+        Type vehicleType,
+        int amountOfFuel,
+        Place place
+
+        Vehicle = new Vehicle(name, )
+        vehicleResource.addVehicle();*//*
+    }
+
+    private void showModels() {
+        ModelResource modelResource = new ModelResource();
+        Iterator<Model> modelIterator = modelResource.getModels().iterator();
+        while (modelIterator.hasNext()) {
+            System.out.println(modelIterator.next());
+        }
+    }*/
 }
