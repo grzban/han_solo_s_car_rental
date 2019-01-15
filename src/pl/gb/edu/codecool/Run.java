@@ -17,7 +17,7 @@ public class Run {
         AvailableVehiclesView availableVehiclesView = new AvailableVehiclesView();
 
         AvailableVehiclesController availableVehiclesController = new AvailableVehiclesController(vehicleRentResource, availableVehiclesView);
-        availableVehiclesController.showAvalableVehicles();
+        availableVehiclesController.showAvailableVehicles();
 
     }
 }

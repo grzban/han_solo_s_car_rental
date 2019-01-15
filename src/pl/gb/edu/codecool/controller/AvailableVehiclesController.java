@@ -13,7 +13,7 @@ public class AvailableVehiclesController {
         this.availableVehiclesView = availableVehiclesView;
     }
 
-    public void showAvalableVehicles() {
+    public void showAvailableVehicles() {
         try {
             availableVehiclesView.showAvailableVehicles(vehicleRentResource.getAvailableVehicleResource().getVehicles());
         } catch (EmptyVehicleListException e) {
