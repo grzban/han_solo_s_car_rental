@@ -49,6 +49,10 @@ public class Vehicle {
         return vehicleId;
     }
 
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
