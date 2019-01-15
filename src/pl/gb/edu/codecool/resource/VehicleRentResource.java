@@ -12,9 +12,10 @@ public class VehicleRentResource {
         rentedVehicleResource = new RentedVehicleResource();
     }
 
-    public void returnVehicle(int vehicleId) {
+    public void returnVehicle(int vehicleId, String place) {
         try {
             Vehicle vehicle = rentedVehicleResource.getVehicleById(vehicleId);
+            vehicle.setPlace(place);
             rentedVehicleResource.removeVehicle(vehicle);
             availableVehicleResource.addVehicle(vehicle);
         } catch (VehicleNotExistsException e) {
@@ -25,6 +26,7 @@ public class VehicleRentResource {
     public void rentVehicle(int vehicleId) {
         try {
             Vehicle vehicle = availableVehicleResource.getVehicleById(vehicleId);
+            vehicle.setPlace("RENTED");
             availableVehicleResource.removeVehicle(vehicle);
             rentedVehicleResource.addVehicle(vehicle);
         } catch (VehicleNotExistsException e) {
