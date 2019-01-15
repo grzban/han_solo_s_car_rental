@@ -45,6 +45,10 @@ public class Vehicle {
         return Objects.hash(vehicleId, name, model, dateOfProduction, mileageOfTheVehicle, type, amountOfFuel, place);
     }
 
+    public int getVehicleId() {
+        return vehicleId;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
