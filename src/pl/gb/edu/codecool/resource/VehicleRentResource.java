@@ -1,5 +1,6 @@
 package pl.gb.edu.codecool.resource;
 
+import pl.gb.edu.codecool.enums.Place;
 import pl.gb.edu.codecool.exception.VehicleNotExistsException;
 import pl.gb.edu.codecool.model.Vehicle;
 
@@ -12,7 +13,7 @@ public class VehicleRentResource {
         rentedVehicleResource = new RentedVehicleResource();
     }
 
-    public void returnVehicle(int vehicleId, String place) {
+    public void returnVehicle(int vehicleId, Place place) {
         try {
             Vehicle vehicle = rentedVehicleResource.getVehicleById(vehicleId);
             vehicle.setPlace(place);
@@ -26,7 +27,7 @@ public class VehicleRentResource {
     public void rentVehicle(int vehicleId) {
         try {
             Vehicle vehicle = availableVehicleResource.getVehicleById(vehicleId);
-            vehicle.setPlace("RENTED");
+            vehicle.setPlace(Place.RENTED);
             availableVehicleResource.removeVehicle(vehicle);
             rentedVehicleResource.addVehicle(vehicle);
         } catch (VehicleNotExistsException e) {
