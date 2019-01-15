@@ -1,19 +1,23 @@
 package pl.gb.edu.codecool.model;
 
+import pl.gb.edu.codecool.enums.Model;
+import pl.gb.edu.codecool.enums.Place;
+import pl.gb.edu.codecool.enums.Type;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class Vehicle {
     private int vehicleId;
     private String name;
-    private String model;
+    private Model model;
     private Date dateOfProduction;
     private int mileageOfTheVehicle;
-    private String type;
+    private Type type;
     private int amountOfFuel;
-    private String place;
+    private Place place;
 
-    public Vehicle(int vehicleId, String name, String model, Date dateOfProduction, int mileageOfTheVehicle, String type, int amountOfFuel, String place) {
+    public Vehicle(int vehicleId, String name, Model model, Date dateOfProduction, int mileageOfTheVehicle, Type type, int amountOfFuel, Place place) {
         this.vehicleId = vehicleId;
         this.name = name;
         this.model = model;
@@ -49,7 +53,7 @@ public class Vehicle {
         return vehicleId;
     }
 
-    public void setPlace(String place) {
+    public void setPlace(Place place) {
         this.place = place;
     }
 
