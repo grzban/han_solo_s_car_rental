@@ -1,6 +1,8 @@
 package pl.gb.edu.codecool.controller;
 
+import pl.gb.edu.codecool.resource.ExampleVehicle;
 import pl.gb.edu.codecool.resource.VehicleRentResource;
+import pl.gb.edu.codecool.view.AvailableVehiclesView;
 import pl.gb.edu.codecool.view.MainMenuView;
 import pl.gb.edu.codecool.view.ViewUtil;
 
@@ -9,10 +11,18 @@ public class MainMenuController {
     private VehicleRentResource vehicleRentResource;
     private ViewUtil viewUtil;
 
+
     public MainMenuController(MainMenuView mainMenuView, VehicleRentResource vehicleRentResource) {
         this.mainMenuView = mainMenuView;
         this.vehicleRentResource = vehicleRentResource;
         viewUtil = new ViewUtil();
+        addExampleVehicles();
+    }
+
+    private void addExampleVehicles() {
+        ExampleVehicle exampleVehicle = new ExampleVehicle();
+        vehicleRentResource.getAvailableVehicleResource().addVehicle(exampleVehicle.example1());
+        vehicleRentResource.getAvailableVehicleResource().addVehicle(exampleVehicle.example2());
     }
 
     public void showMainMenu() {
@@ -32,7 +42,7 @@ public class MainMenuController {
                 break;
             case "1":
                 System.out.println("1. lista obecnie dostępnych pojazdów");
-//                showAvailableVehicles();
+                showAvailableVehicles();
                 break;
             case "2":
                 System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
@@ -79,5 +89,11 @@ public class MainMenuController {
                 System.out.println("Wybierz inną opcję");
                 break;
         }
+    }
+
+    private void showAvailableVehicles() {
+        AvailableVehiclesView availableVehiclesView = new AvailableVehiclesView();
+        AvailableVehiclesController availableVehiclesController = new AvailableVehiclesController(vehicleRentResource, availableVehiclesView);
+        availableVehiclesController.showAvailableVehicles();
     }
 }

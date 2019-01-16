@@ -176,31 +176,5 @@ public class MainMenuView {
         }
     }
 
-    private void addVehicle() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Podaj nazwę pojazdu");
-        String name = scanner.next();
-
-
-        System.out.println("Podaj id modelu:");
-        showModels();
-        int modelId = getVehicleId();
-
-        *//*Date dateOfProduction,
-        int mileageOfTheVehicle,
-        Type vehicleType,
-        int amountOfFuel,
-        Place place
-
-        Vehicle = new Vehicle(name, )
-        vehicleResource.addVehicle();*//*
-    }
-
-    private void showModels() {
-        ModelResource modelResource = new ModelResource();
-        Iterator<Model> modelIterator = modelResource.getModels().iterator();
-        while (modelIterator.hasNext()) {
-            System.out.println(modelIterator.next());
-        }
     }*/
 }
