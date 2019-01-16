@@ -1,5 +1,6 @@
 package pl.gb.edu.codecool;
 
+import pl.gb.edu.codecool.controller.AddVehicleController;
 import pl.gb.edu.codecool.controller.AvailableVehiclesController;
 import pl.gb.edu.codecool.enums.Model;
 import pl.gb.edu.codecool.resource.ExampleVehicle;
@@ -22,5 +23,8 @@ public class Run {
 //        availableVehiclesController.showAvailableVehicles();
 
         AddVehicleView addVehicleView = new AddVehicleView();
+        AddVehicleController addVehicleController = new AddVehicleController(addVehicleView, vehicleRentResource);
+
+        availableVehiclesController.showAvailableVehicles();
     }
 }

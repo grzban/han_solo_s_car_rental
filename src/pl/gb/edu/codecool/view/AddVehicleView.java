@@ -7,40 +7,37 @@ import pl.gb.edu.codecool.exception.MissingModelException;
 import pl.gb.edu.codecool.exception.MissingPlaceException;
 import pl.gb.edu.codecool.exception.MissingTypeException;
 
+import java.util.Date;
+
 public class AddVehicleView {
     private ViewUtil viewUtil;
 
     public AddVehicleView() {
         viewUtil = new ViewUtil();
         System.out.println("Dodawanie pojazdu");
-        getName();
-        getModel();
-        getDateOfProduction();
-        getMileageOfTheVehicle();
-        getType();
-        getAmountOfFuel();
-        getPlace();
     }
 
-    private void getName() {
+    public String getName() {
         System.out.println("Podaj nazwę");
-        viewUtil.getStringValue();
+        return viewUtil.getStringValue();
     }
 
-    private void getModel() {
+    public Model getModel() {
         showModels();
         System.out.println("Wybierz model");
+        Model model;
         while (true) {
             try {
-                getModelById(viewUtil.getIntegerValue());
+                model = getModelById(viewUtil.getIntegerValue());
                 break;
             } catch (MissingModelException e) {
                 System.out.println(e.getMessage());
             }
         }
+        return model;
     }
 
-    private void getDateOfProduction() {
+    public Date getDateOfProduction() {
         System.out.println("Podaj datę produkcji");
         System.out.println("Rok:");
         viewUtil.getIntegerValue();
@@ -48,24 +45,27 @@ public class AddVehicleView {
         viewUtil.getIntegerValue();
         System.out.println("Dzień:");
         viewUtil.getIntegerValue();
+        return new Date();
     }
 
-    private void getMileageOfTheVehicle() {
+    public int getMileageOfTheVehicle() {
         System.out.println("Podaj przebieg");
-        viewUtil.getIntegerValue();
+        return viewUtil.getIntegerValue();
     }
 
-    private void getType() {
+    public Type getType() {
         showTypes();
         System.out.println("Wybierz typ");
+        Type type;
         while (true) {
             try {
-                getTypeById(viewUtil.getIntegerValue());
+                type = getTypeById(viewUtil.getIntegerValue());
                 break;
             } catch (MissingTypeException e) {
                 System.out.println(e.getMessage());
             }
         }
+        return type;
     }
 
     private Type getTypeById(int typeId) throws MissingTypeException {
@@ -83,9 +83,9 @@ public class AddVehicleView {
         }
     }
 
-    private void getAmountOfFuel() {
+    public int getAmountOfFuel() {
         System.out.println("Wpisz pojemność zbiornika paliwa");
-        viewUtil.getIntegerValue();
+        return viewUtil.getIntegerValue();
     }
 
     private void showModels() {
@@ -122,17 +122,19 @@ public class AddVehicleView {
         }
     }
 
-    private void getPlace() {
+    public Place getPlace() {
         showPlaces();
         System.out.println("Wybierz miejsce postoju");
+        Place place;
         while (true) {
             try {
-                getPlaceById(viewUtil.getIntegerValue());
+                place = getPlaceById(viewUtil.getIntegerValue());
                 break;
             } catch (MissingPlaceException e) {
                 System.out.println(e.getMessage());
             }
         }
+        return place;
     }
 
     private Place getPlaceById(int placeId) throws MissingPlaceException {
