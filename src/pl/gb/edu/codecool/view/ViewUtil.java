@@ -10,7 +10,7 @@ public class ViewUtil {
         return getUserChoice();
     }
 
-    int getIntegerValue() {
+    public int getIntegerValue() {
         int id;
         while (true) {
             try {
@@ -33,8 +33,18 @@ public class ViewUtil {
         return number;
     }
 
-    private String getUserChoice() {
+    public String getUserChoice() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();
+    }
+
+    public void clearConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public void closeApplication() {
+        System.out.println("No to kończymy! Pa!");
+        System.exit(0);
     }
 }

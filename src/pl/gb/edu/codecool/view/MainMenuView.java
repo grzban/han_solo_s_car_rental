@@ -1,25 +1,27 @@
 package pl.gb.edu.codecool.view;
 
-import pl.gb.edu.codecool.exception.VehicleNotExistsException;
-import pl.gb.edu.codecool.model.Model;
 import pl.gb.edu.codecool.model.Vehicle;
 import pl.gb.edu.codecool.resource.AvailableVehicleResource;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
-
 public class MainMenuView {
 
-    private AvailableVehicleResource vehicleResource;
-    private Vehicle vehicle;
+//    private AvailableVehicleResource vehicleResource;
+//    private Vehicle vehicle;
 
+/*
     public MainMenuView(AvailableVehicleResource vehicleResource) {
         this.vehicleResource = vehicleResource;
     }
+*/
+
+    private ViewUtil viewUtil;
+
+    public MainMenuView() {
+        viewUtil = new ViewUtil();
+    }
 
     public void printMainMenu() {
-        clearConsole();
+        viewUtil.clearConsole();
         System.out.println("Wypożyczalnia pojazdów Hana Solo");
         System.out.println("1. lista obecnie dostępnych pojazdów");
         System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
@@ -30,10 +32,7 @@ public class MainMenuView {
         System.out.println("q. zakończenie działania programu");
     }
 
-    public void clearConsole() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
+
 /*
     public void mainMenuHandler() {
 
@@ -102,10 +101,6 @@ public class MainMenuView {
         showAvailableVehicles(vehicleResource.getRentedVehicles());
     }
 
-    private String getUserChoice() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.next();
-    }
 
     private int getVehicleId() {
         int vehicleId;
@@ -120,10 +115,7 @@ public class MainMenuView {
         return vehicleId;
     }
 
-    private void closeApplication() {
-        System.out.println("No to kończymy! Pa!");
-        System.exit(0);
-    }
+
 
     private void showAvailableVehicles(List<Vehicle> vehicles) {
         Iterator<Vehicle> allVehicles = vehicles.listIterator();
