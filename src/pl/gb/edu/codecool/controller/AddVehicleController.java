@@ -17,7 +17,7 @@ public class AddVehicleController {
     private AddVehicleView addVehicleView;
     private VehicleRentResource vehicleRentResource;
 
-    public AddVehicleController(AddVehicleView addVehicleView, VehicleRentResource vehicleRentResource) {
+    public AddVehicleController(VehicleRentResource vehicleRentResource, AddVehicleView addVehicleView) {
         this.addVehicleView = addVehicleView;
         this.vehicleRentResource = vehicleRentResource;
     }
