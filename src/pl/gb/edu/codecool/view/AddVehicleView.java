@@ -7,7 +7,8 @@ import pl.gb.edu.codecool.exception.MissingModelException;
 import pl.gb.edu.codecool.exception.MissingPlaceException;
 import pl.gb.edu.codecool.exception.MissingTypeException;
 
-import java.util.Date;
+import java.time.*;
+import java.time.format.DateTimeParseException;
 
 public class AddVehicleView {
     private ViewUtil viewUtil;
@@ -37,15 +38,64 @@ public class AddVehicleView {
         return model;
     }
 
-    public Date getDateOfProduction() {
+    public LocalDate getDateOfProduction() {
         System.out.println("Podaj datę produkcji");
         System.out.println("Rok:");
-        viewUtil.getIntegerValue();
+
+        Year year = getYear();
         System.out.println("Miesiąc:");
-        viewUtil.getIntegerValue();
+        Month month = getMonth();
         System.out.println("Dzień:");
-        viewUtil.getIntegerValue();
-        return new Date();
+        MonthDay day = getDay(month);
+        LocalDate date = null;
+        try {
+            date = LocalDate.of(year.getValue(), month, day.getDayOfMonth());
+            System.out.println(date);
+        } catch (DateTimeException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Podaj dzień jeszcze raz!");
+            getDay(month);
+        }
+        return date;
+    }
+
+    private Year getYear() {
+        Year year;
+        while (true) {
+            try {
+                year = Year.parse(viewUtil.getStringValue());
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Podałeś zły rok! Spróbuj jeszcze raz!");
+            }
+        }
+        return year;
+    }
+
+    private Month getMonth() {
+        Month month;
+        while (true) {
+            try {
+                month = Month.of(viewUtil.getIntegerValue());
+                break;
+            } catch (DateTimeException e) {
+                System.out.println("Podałeś zły miesiąc! Spróbuj jeszcze raz!");
+            }
+        }
+        return month;
+    }
+
+    private MonthDay getDay(Month month) {
+        MonthDay day;
+        while (true) {
+            try {
+                day = MonthDay.of(month, viewUtil.getIntegerValue());
+                break;
+            } catch (DateTimeException e) {
+                System.out.println("Podałeś zły dzień! Spróbuj jeszcze raz!");
+            }
+        }
+        return day;
     }
 
     public int getMileageOfTheVehicle() {

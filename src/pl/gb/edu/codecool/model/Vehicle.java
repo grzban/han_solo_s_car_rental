@@ -4,20 +4,20 @@ import pl.gb.edu.codecool.enums.Model;
 import pl.gb.edu.codecool.enums.Place;
 import pl.gb.edu.codecool.enums.Type;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Vehicle {
     private int vehicleId;
     private String name;
     private Model model;
-    private Date dateOfProduction;
+    private LocalDate dateOfProduction;
     private int mileageOfTheVehicle;
     private Type type;
     private int amountOfFuel;
     private Place place;
 
-    public Vehicle(int vehicleId, String name, Model model, Date dateOfProduction, int mileageOfTheVehicle, Type type, int amountOfFuel, Place place) {
+    public Vehicle(int vehicleId, String name, Model model, LocalDate dateOfProduction, int mileageOfTheVehicle, Type type, int amountOfFuel, Place place) {
         this.vehicleId = vehicleId;
         this.name = name;
         this.model = model;

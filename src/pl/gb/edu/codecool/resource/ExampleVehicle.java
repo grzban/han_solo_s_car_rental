@@ -5,7 +5,7 @@ import pl.gb.edu.codecool.enums.Place;
 import pl.gb.edu.codecool.enums.Type;
 import pl.gb.edu.codecool.model.Vehicle;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ExampleVehicle {
 
@@ -14,7 +14,7 @@ public class ExampleVehicle {
                 1,
                 "Vehicle 1",
                 Model.MODEL_1,
-                new Date(1287784800000l),
+                LocalDate.of(2010, 10, 23),
                 3000,
                 Type.FLYING_FIGHTER,
                 100,
@@ -26,7 +26,7 @@ public class ExampleVehicle {
                 2,
                 "Vehicle 2",
                 Model.MODEL_2,
-                new Date(1297784800000l),
+                LocalDate.of(2010, 1, 3),
                 3000,
                 Type.GROUND_RIDING,
                 100,

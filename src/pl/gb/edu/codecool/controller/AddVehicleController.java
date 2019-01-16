@@ -7,7 +7,7 @@ import pl.gb.edu.codecool.model.Vehicle;
 import pl.gb.edu.codecool.resource.VehicleRentResource;
 import pl.gb.edu.codecool.view.AddVehicleView;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class AddVehicleController {
     private AddVehicleView addVehicleView;
@@ -17,6 +17,7 @@ public class AddVehicleController {
     public AddVehicleController(AddVehicleView addVehicleView, VehicleRentResource vehicleRentResource) {
         this.addVehicleView = addVehicleView;
         this.vehicleRentResource = vehicleRentResource;
+        getDateOfProduction();
         vehicle = new Vehicle(4, getVehicleName(), getModel(), getDateOfProduction(), getMileageOfTheVehicle(), getType(), getAmountOfFuel(), getPlace());
         addVehicle(vehicle);
     }
@@ -33,7 +34,7 @@ public class AddVehicleController {
         return addVehicleView.getModel();
     }
 
-    private Date getDateOfProduction() {
+    private LocalDate getDateOfProduction() {
         return addVehicleView.getDateOfProduction();
     }
 
