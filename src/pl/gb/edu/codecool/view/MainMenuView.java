@@ -32,70 +32,7 @@ public class MainMenuView {
         System.out.println("q. zakończenie działania programu");
     }
 
-
-/*
-    public void mainMenuHandler() {
-
-        String choice = getUserChoice();
-
-        switch (choice) {
-            case "q":
-                closeApplication();
-                break;
-            case "1":
-                System.out.println("1. lista obecnie dostępnych pojazdów");
-                showAvailableVehicles();
-                break;
-            case "2":
-                System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
-                addVehicle();
-
-                break;
-            case "3":
-                clearConsole();
-                System.out.println("3. usunięcie pojazdu z listy dostępnych pojazdów");
-                showAvailableVehicles();
-                System.out.println("Podaj id pojazdu który chcesz usunąć:");
-                removeVehicle();
-                break;
-            case "4":
-                clearConsole();
-                System.out.println("4. szczegóły pojazdu");
-                showAvailableVehicles();
-                System.out.println("Podaj id pojazdu który chcesz usunąć:");
-                showVehicleDetails();
-                break;
-            case "5":
-                clearConsole();
-                System.out.println("5. wypożyczanie pojazdu");
-                showAvailableVehicles();
-                System.out.println("Podaj id pojazdu który chcesz wypożyczyć");
-                rentTheVehicle();
-                System.out.println("Dostępne pojazdy");
-                showAvailableVehicles();
-                System.out.println("Wypożyczone pojazdy");
-                showRentedVehicles();
-                break;
-            case "6":
-                System.out.println("6. zwrot pojazdu");
-                System.out.println("Wypożyczone pojazdy");
-                showRentedVehicles();
-                System.out.println("Podaj id pojazdu, który chcesz zwrócić?");
-                returnTheVehicle();
-                System.out.println("Dostępne pojazdy");
-                showAvailableVehicles();
-                System.out.println("Wypożyczone pojazdy");
-                showRentedVehicles();
-                break;
-            default:
-                System.out.println("Wybierz inną opcję");
-                break;
-        }
-    }*/
-
-    /*private void showAvailableVehicles() {
-        showAvailableVehicles(vehicleResource.getAvailableVehicles());
-    }
+    /*
 
     private void showRentedVehicles() {
         showAvailableVehicles(vehicleResource.getRentedVehicles());
@@ -113,23 +50,6 @@ public class MainMenuView {
             }
         }
         return vehicleId;
-    }
-
-
-
-    private void showAvailableVehicles(List<Vehicle> vehicles) {
-        Iterator<Vehicle> allVehicles = vehicles.listIterator();
-        if (allVehicles.hasNext()) {
-            System.out.println("+--------------------------------------------------------------+");
-
-            while (allVehicles.hasNext()) {
-                vehicle = allVehicles.next();
-                System.out.println("|\t" + vehicle.getVehicleId() + "\t|\t" + vehicle.getName() + "\t|");
-                System.out.println("+--------------------------------------------------------------+");
-            }
-        } else {
-            System.out.println("There aren't any vehicles");
-        }
     }
 
     private void showVehicleDetails(Vehicle vehicle) {

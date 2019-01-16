@@ -2,10 +2,7 @@ package pl.gb.edu.codecool.controller;
 
 import pl.gb.edu.codecool.resource.ExampleVehicle;
 import pl.gb.edu.codecool.resource.VehicleRentResource;
-import pl.gb.edu.codecool.view.AddVehicleView;
-import pl.gb.edu.codecool.view.AvailableVehiclesView;
-import pl.gb.edu.codecool.view.MainMenuView;
-import pl.gb.edu.codecool.view.ViewUtil;
+import pl.gb.edu.codecool.view.*;
 
 public class MainMenuController {
     private MainMenuView mainMenuView;
@@ -42,19 +39,13 @@ public class MainMenuController {
                 viewUtil.closeApplication();
                 break;
             case "1":
-                System.out.println("1. lista obecnie dostępnych pojazdów");
                 showAvailableVehicles();
                 break;
             case "2":
-                System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
                 addVehicle();
                 break;
             case "3":
-                viewUtil.clearConsole();
-                System.out.println("3. usunięcie pojazdu z listy dostępnych pojazdów");
-//                showAvailableVehicles();
-                System.out.println("Podaj id pojazdu który chcesz usunąć:");
-//                removeVehicle();
+                removeVehicle();
                 break;
             case "4":
                 viewUtil.clearConsole();
@@ -92,14 +83,28 @@ public class MainMenuController {
     }
 
     private void showAvailableVehicles() {
+        viewUtil.clearConsole();
+        System.out.println("1. lista obecnie dostępnych pojazdów");
         AvailableVehiclesView availableVehiclesView = new AvailableVehiclesView();
         AvailableVehiclesController availableVehiclesController = new AvailableVehiclesController(vehicleRentResource, availableVehiclesView);
         availableVehiclesController.showAvailableVehicles();
     }
 
     private void addVehicle() {
+        viewUtil.clearConsole();
+        System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
         AddVehicleView addVehicleView = new AddVehicleView();
         AddVehicleController addVehicleController = new AddVehicleController(vehicleRentResource, addVehicleView);
         addVehicleController.addVehicle();
+    }
+
+    private void removeVehicle() {
+        viewUtil.clearConsole();
+        System.out.println("3. usunięcie pojazdu z listy dostępnych pojazdów");
+        showAvailableVehicles();
+        System.out.println("Podaj id pojazdu który chcesz usunąć:");
+        RemoveVehicleView removeVehicleView = new RemoveVehicleView();
+        RemoveVehicleController removeVehicleController = new RemoveVehicleController(removeVehicleView, vehicleRentResource);
+        removeVehicleController.removeVehicle();
     }
 }

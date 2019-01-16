@@ -35,6 +35,20 @@ public class VehicleRentResource {
         }
     }
 
+    public void removeVehicle(int vehicleId) {
+        Vehicle vehicle = null;
+        try {
+             vehicle = getAvailableVehicleResource().getVehicleById(vehicleId);
+        } catch (VehicleNotExistsException e) {
+            System.out.println(e.getMessage());
+        }
+        if (vehicle != null) {
+            getAvailableVehicleResource().removeVehicle(vehicle);
+        } else {
+            System.out.println("Nie można usunąć pojazdu!");
+        }
+    }
+
     public AvailableVehicleResource getAvailableVehicleResource() {
         return availableVehicleResource;
     }
