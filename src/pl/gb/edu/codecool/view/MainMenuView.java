@@ -34,47 +34,7 @@ public class MainMenuView {
 
     /*
 
-    private void showRentedVehicles() {
-        showAvailableVehicles(vehicleResource.getRentedVehicles());
-    }
 
-
-    private int getVehicleId() {
-        int vehicleId;
-        while (true) {
-            try {
-                vehicleId = Integer.parseInt(getUserChoice());
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("Wprowadz poprwane id");
-            }
-        }
-        return vehicleId;
-    }
-
-    private void showVehicleDetails(Vehicle vehicle) {
-        System.out.println("+--------------------------------------------------------------+");
-        System.out.println(vehicle.toString());
-        System.out.println("+--------------------------------------------------------------+");
-    }
-
-    private void showVehicleDetails() {
-        int vehicleId = getVehicleId();
-        try {
-            showVehicleDetails(vehicleResource.getAvailableVehicleById(vehicleId));
-        } catch (VehicleNotExistsException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public void removeVehicle() {
-        int vehicleId = getVehicleId();
-        try {
-            vehicleResource.removeVehicle(vehicleId);
-        } catch (VehicleNotExistsException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     public void rentTheVehicle() {
         int vehicleId = getVehicleId();

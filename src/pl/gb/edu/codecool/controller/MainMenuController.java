@@ -1,5 +1,6 @@
 package pl.gb.edu.codecool.controller;
 
+import pl.gb.edu.codecool.model.Vehicle;
 import pl.gb.edu.codecool.resource.ExampleVehicle;
 import pl.gb.edu.codecool.resource.VehicleRentResource;
 import pl.gb.edu.codecool.view.*;
@@ -51,15 +52,7 @@ public class MainMenuController {
                 showVehicleDetails();
                 break;
             case "5":
-//                clearConsole();
-                System.out.println("5. wypożyczanie pojazdu");
-//                showAvailableVehicles();
-                System.out.println("Podaj id pojazdu który chcesz wypożyczyć");
-//                rentTheVehicle();
-                System.out.println("Dostępne pojazdy");
-//                showAvailableVehicles();
-                System.out.println("Wypożyczone pojazdy");
-//                showRentedVehicles();
+                rentVehicle();
                 break;
             case "6":
                 System.out.println("6. zwrot pojazdu");
@@ -84,6 +77,13 @@ public class MainMenuController {
         AvailableVehiclesView availableVehiclesView = new AvailableVehiclesView();
         AvailableVehiclesController availableVehiclesController = new AvailableVehiclesController(vehicleRentResource, availableVehiclesView);
         availableVehiclesController.showAvailableVehicles();
+    }
+
+    private void showRentedVehicles() {
+        System.out.println("1. lista obecnie wypożyczonych pojazdów");
+        AvailableVehiclesView availableVehiclesView = new AvailableVehiclesView();
+        AvailableVehiclesController availableVehiclesController = new AvailableVehiclesController(vehicleRentResource, availableVehiclesView);
+//        availableVehiclesController.s;
     }
 
     private void addVehicle() {
@@ -112,5 +112,20 @@ public class MainMenuController {
         DetailsVehicleView detailsVehicleView = new DetailsVehicleView();
         DetailsVehicleController detailsVehicleController = new DetailsVehicleController(detailsVehicleView, vehicleRentResource);
         detailsVehicleController.showVehicleDetails();
+    }
+
+    private void rentVehicle() {
+        viewUtil.clearConsole();
+        System.out.println("5. wypożyczanie pojazdu");
+        showAvailableVehicles();
+        System.out.println("Podaj id pojazdu który chcesz wypożyczyć");
+        RentVehicleView rentVehicleView = new RentVehicleView();
+        RentVehicleController rentVehicleController = new RentVehicleController(rentVehicleView, vehicleRentResource);
+        System.out.println("Dostępne pojazdy");
+        int vehicleId = rentVehicleView.getVehicleId();
+        vehicleRentResource.rentVehicle(vehicleId);
+        showAvailableVehicles();
+        /*System.out.println("Wypożyczone pojazdy");
+        showRentedVehicles();*/
     }
 }
