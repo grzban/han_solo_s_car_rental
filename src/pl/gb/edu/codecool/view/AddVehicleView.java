@@ -150,7 +150,7 @@ public class AddVehicleView {
         }
     }
 
-    private void showPlaces() {
+    public void showPlaces() {
         for (Place place : Place.values()) {
             System.out.println(place);
         }

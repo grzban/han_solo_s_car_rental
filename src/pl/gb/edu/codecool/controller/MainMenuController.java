@@ -55,15 +55,7 @@ public class MainMenuController {
                 rentVehicle();
                 break;
             case "6":
-                System.out.println("6. zwrot pojazdu");
-                System.out.println("Wypożyczone pojazdy");
-//                showRentedVehicles();
-                System.out.println("Podaj id pojazdu, który chcesz zwrócić?");
-//                returnTheVehicle();
-                System.out.println("Dostępne pojazdy");
-//                showAvailableVehicles();
-                System.out.println("Wypożyczone pojazdy");
-//                showRentedVehicles();
+                returnVehicle();
                 break;
             default:
                 System.out.println("Wybierz inną opcję");
@@ -117,7 +109,20 @@ public class MainMenuController {
         System.out.println("Podaj id pojazdu który chcesz wypożyczyć");
         vehicleRentResource.rentVehicle(rentVehicleView.getVehicleId());
         showAvailableVehicles();
+        showRentedVehicles();
+    }
 
+    private void returnVehicle() {
+        viewUtil.clearConsole();
+        ReturnVehicleView returnVehicleView = new ReturnVehicleView();
+        ReturnVehicleController returnVehicleController = new ReturnVehicleController(returnVehicleView, vehicleRentResource);
+        System.out.println("Wypożyczone pojazdy");
+        showRentedVehicles();
+        System.out.println("Podaj id pojazdu, który chcesz zwrócić?");
+        returnVehicleController.returnVehicle();
+        System.out.println("Dostępne pojazdy");
+        showAvailableVehicles();
+        System.out.println("Wypożyczone pojazdy");
         showRentedVehicles();
     }
 }
