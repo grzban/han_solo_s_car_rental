@@ -15,7 +15,7 @@ public class AddVehicleView {
 
     public AddVehicleView() {
         viewUtil = new ViewUtil();
-        System.out.println("Dodawanie pojazdu");
+        System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");
     }
 
     public String getName() {

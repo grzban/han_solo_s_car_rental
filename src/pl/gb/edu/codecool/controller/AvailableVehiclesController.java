@@ -8,7 +8,7 @@ public class AvailableVehiclesController {
     private VehicleRentResource vehicleRentResource;
     private AvailableVehiclesView availableVehiclesView;
 
-    public AvailableVehiclesController(VehicleRentResource vehicleRentResource, AvailableVehiclesView availableVehiclesView) {
+    public AvailableVehiclesController(AvailableVehiclesView availableVehiclesView, VehicleRentResource vehicleRentResource) {
         this.vehicleRentResource = vehicleRentResource;
         this.availableVehiclesView = availableVehiclesView;
     }

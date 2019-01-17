@@ -9,6 +9,7 @@ public class DetailsVehicleView {
 
     public DetailsVehicleView() {
         viewUtil = new ViewUtil();
+        System.out.println("4. szczegóły pojazdu");
     }
 
     public int getVehicleId() {

@@ -6,6 +6,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class AvailableVehiclesView {
+    public AvailableVehiclesView() {
+        System.out.println("1. lista obecnie dostępnych pojazdów");
+    }
+
     public void showAvailableVehicles(List<Vehicle> vehicles) {
         Iterator<Vehicle> vehicleIterator = vehicles.listIterator();
         while (vehicleIterator.hasNext()) {

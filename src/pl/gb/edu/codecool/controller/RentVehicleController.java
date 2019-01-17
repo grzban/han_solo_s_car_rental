@@ -1,5 +1,6 @@
 package pl.gb.edu.codecool.controller;
 
+import pl.gb.edu.codecool.exception.EmptyVehicleListException;
 import pl.gb.edu.codecool.resource.VehicleRentResource;
 import pl.gb.edu.codecool.view.RentVehicleView;
 
@@ -12,7 +13,11 @@ public class RentVehicleController {
         this.vehicleRentResource = vehicleRentResource;
     }
 
-    public void rentVehicle() {
-
+    public void showRentedVehicles() {
+        try {
+            rentVehicleView.showRentedVehicles(vehicleRentResource.getRentedVehicleResource().getVehicles());
+        } catch (EmptyVehicleListException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
