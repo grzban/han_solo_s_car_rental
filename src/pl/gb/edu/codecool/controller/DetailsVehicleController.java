@@ -20,7 +20,7 @@ public class DetailsVehicleController {
         try {
             vehicle = vehicleRentResource.getAvailableVehicleResource().getVehicleById(vehicleId);
         } catch (VehicleNotExistsException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         if (vehicle != null) {
             detailsVehicleView.showVehicleDetails(vehicle);

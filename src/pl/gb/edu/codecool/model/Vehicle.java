@@ -53,6 +53,10 @@ public class Vehicle {
         return vehicleId;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setPlace(Place place) {
         this.place = place;
     }

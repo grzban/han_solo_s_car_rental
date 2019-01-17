@@ -10,7 +10,7 @@ public class AvailableVehiclesView {
         Iterator<Vehicle> vehicleIterator = vehicles.listIterator();
         while (vehicleIterator.hasNext()) {
             Vehicle vehicle = vehicleIterator.next();
-            System.out.println(vehicle.toString());
+            System.out.println("|\t" +vehicle.getVehicleId() + "\t|\t" + vehicle.getName() + "\t|");
         }
     }
 }
