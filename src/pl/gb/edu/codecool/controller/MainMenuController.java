@@ -48,11 +48,7 @@ public class MainMenuController {
                 removeVehicle();
                 break;
             case "4":
-                viewUtil.clearConsole();
-                System.out.println("4. szczegóły pojazdu");
-//                showAvailableVehicles();
-                System.out.println("Podaj id pojazdu który chcesz usunąć:");
-//                showVehicleDetails();
+                showVehicleDetails();
                 break;
             case "5":
 //                clearConsole();
@@ -106,5 +102,15 @@ public class MainMenuController {
         RemoveVehicleView removeVehicleView = new RemoveVehicleView();
         RemoveVehicleController removeVehicleController = new RemoveVehicleController(removeVehicleView, vehicleRentResource);
         removeVehicleController.removeVehicle();
+    }
+
+    private void showVehicleDetails() {
+        viewUtil.clearConsole();
+        System.out.println("4. szczegóły pojazdu");
+        showAvailableVehicles();
+
+        DetailsVehicleView detailsVehicleView = new DetailsVehicleView();
+        DetailsVehicleController detailsVehicleController = new DetailsVehicleController(detailsVehicleView, vehicleRentResource);
+        detailsVehicleController.showVehicleDetails();
     }
 }
