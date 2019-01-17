@@ -15,17 +15,9 @@ public class AvailableVehiclesController {
 
     public void showAvailableVehicles() {
         try {
-            availableVehiclesView.showAvailableVehicles(vehicleRentResource.getAvailableVehicleResource().getVehicles());
+            availableVehiclesView.showVehicles(vehicleRentResource.getAvailableVehicleResource().getVehicles());
         } catch (EmptyVehicleListException e) {
             System.out.println(e.getMessage());
         }
     }
-
-    /*public void showRentedVehicles() {
-        try {
-//            vehicleRentResource.getRentedVehicleResource().getVehicles().showAvailableVehicles(vehicleRentResource.getAvailableVehicleResource().getVehicles());
-        } catch (EmptyVehicleListException e) {
-            System.out.println(e.getMessage());
-        }
-    }*/
 }

@@ -2,19 +2,16 @@ package pl.gb.edu.codecool.view;
 
 import pl.gb.edu.codecool.model.Vehicle;
 
-public class DetailsVehicleView {
-
-    private ViewUtil viewUtil;
-    private Vehicle vehicle;
+public class DetailsVehicleView extends View {
 
     public DetailsVehicleView() {
-        viewUtil = new ViewUtil();
+        clearConsole();
         System.out.println("4. szczegóły pojazdu");
     }
 
-    public int getVehicleId() {
+    public int getDetailsVehicleId() {
         System.out.println("Podaj id pojazdu, którego szczegóły chcesz zobaczyć:");
-        return viewUtil.getIntegerValue();
+        return getVehicleId();
     }
 
     public void showVehicleDetails(Vehicle vehicle) {

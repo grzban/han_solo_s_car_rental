@@ -64,7 +64,7 @@ public class Vehicle {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append("\n+----------------------------------------+\n");
+        result.append("\n");
         result.append("\tId:\t" + vehicleId);
         result.append("\n");
         result.append("\tName:\t" + name);

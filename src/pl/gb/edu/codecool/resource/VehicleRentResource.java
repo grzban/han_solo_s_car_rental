@@ -13,32 +13,39 @@ public class VehicleRentResource {
         rentedVehicleResource = new RentedVehicleResource();
     }
 
-    public void returnVehicle(int vehicleId, Place place) {
+    public void returnVehicle(int vehicleId) {
+        Vehicle vehicle = null;
         try {
-            Vehicle vehicle = rentedVehicleResource.getVehicleById(vehicleId);
-            vehicle.setPlace(place);
-            rentedVehicleResource.removeVehicle(vehicle);
-            availableVehicleResource.addVehicle(vehicle);
+            vehicle = rentedVehicleResource.getVehicleById(vehicleId);
+
         } catch (VehicleNotExistsException e) {
             System.out.println("There is no vehicle to return!");
+        }
+        if (vehicle != null) {
+            vehicle.setPlace(Place.PARKING);
+            rentedVehicleResource.removeVehicle(vehicle);
+            availableVehicleResource.addVehicle(vehicle);
         }
     }
 
     public void rentVehicle(int vehicleId) {
+        Vehicle vehicle = null;
         try {
-            Vehicle vehicle = availableVehicleResource.getVehicleById(vehicleId);
+            vehicle = availableVehicleResource.getVehicleById(vehicleId);
+        } catch (VehicleNotExistsException e) {
+            System.out.println("No vehicle to rent!");
+        }
+        if (vehicle != null) {
             vehicle.setPlace(Place.RENTED);
             availableVehicleResource.removeVehicle(vehicle);
             rentedVehicleResource.addVehicle(vehicle);
-        } catch (VehicleNotExistsException e) {
-            System.out.println("There is no vehicle to rent!");
         }
     }
 
     public void removeVehicle(int vehicleId) {
         Vehicle vehicle = null;
         try {
-             vehicle = getAvailableVehicleResource().getVehicleById(vehicleId);
+            vehicle = getAvailableVehicleResource().getVehicleById(vehicleId);
         } catch (VehicleNotExistsException e) {
             System.out.println(e.getMessage());
         }

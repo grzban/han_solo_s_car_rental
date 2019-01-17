@@ -13,9 +13,21 @@ public class RentVehicleController {
         this.vehicleRentResource = vehicleRentResource;
     }
 
+    public void rentVehicle() {
+        vehicleRentResource.rentVehicle(rentVehicleView.getVehicleIdToRent());
+    }
+
     public void showRentedVehicles() {
         try {
             rentVehicleView.showRentedVehicles(vehicleRentResource.getRentedVehicleResource().getVehicles());
+        } catch (EmptyVehicleListException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void showVehiclesToRent() {
+        try {
+            rentVehicleView.showVehiclesToRent(vehicleRentResource.getAvailableVehicleResource().getVehicles());
         } catch (EmptyVehicleListException e) {
             System.out.println(e.getMessage());
         }

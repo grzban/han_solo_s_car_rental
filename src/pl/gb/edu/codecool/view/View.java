@@ -1,10 +1,13 @@
 package pl.gb.edu.codecool.view;
 
 import pl.gb.edu.codecool.exception.BadIntegerNumberException;
+import pl.gb.edu.codecool.model.Vehicle;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
-public class ViewUtil {
+public abstract class View {
 
     String getStringValue() {
         return getUserChoice();
@@ -21,6 +24,28 @@ public class ViewUtil {
             }
         }
         return id;
+    }
+    public void showVehicles(List<Vehicle> vehicles) {
+        Iterator<Vehicle> vehicleIterator = vehicles.listIterator();
+        while (vehicleIterator.hasNext()) {
+            Vehicle vehicle = vehicleIterator.next();
+            System.out.println("|\t" +vehicle.getVehicleId() + "\t|\t" + vehicle.getName() + "\t|");
+        }
+    }
+
+    public void showVehiclesToRent(List<Vehicle> vehicles) {
+        System.out.println("Pojazdy do wypożyczenia");
+        showVehicles(vehicles);
+    }
+
+    public void showRentedVehicles(List<Vehicle> vehicles) {
+        System.out.println("Pojazdy wypożyczone");
+        showVehicles(vehicles);
+    }
+
+    public int getVehicleId() {
+        int vehicleId = getIntegerValue();
+        return vehicleId;
     }
 
     private int getInteger() throws BadIntegerNumberException {

@@ -1,29 +1,15 @@
 package pl.gb.edu.codecool.view;
 
-import pl.gb.edu.codecool.model.Vehicle;
+public class RentVehicleView extends View {
 
-import java.util.Iterator;
-import java.util.List;
-
-public class RentVehicleView {
-
-    private ViewUtil viewUtil;
 
     public RentVehicleView() {
-        viewUtil = new ViewUtil();
+        clearConsole();
         System.out.println("5. wypożyczanie pojazdu");
     }
 
-    public int getVehicleId() {
-        int vehicleId = viewUtil.getIntegerValue();
-        return vehicleId;
-    }
-
-    public void showRentedVehicles(List<Vehicle> vehicles) {
-        Iterator<Vehicle> vehicleIterator = vehicles.listIterator();
-        while (vehicleIterator.hasNext()) {
-            Vehicle vehicle = vehicleIterator.next();
-            System.out.println("|\t" +vehicle.getVehicleId() + "\t|\t" + vehicle.getName() + "\t|");
-        }
+    public int getVehicleIdToRent() {
+        System.out.println("Podaj id pojazdu, który chcesz wypożyczyć");
+        return getVehicleId();
     }
 }

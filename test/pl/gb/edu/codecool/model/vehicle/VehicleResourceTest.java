@@ -39,10 +39,10 @@ class VehicleResourceTest {
     }
 
     @Test
-    void removeVehicle() {
+    void getRemoveVehicleId() {
 
         try {
-            vehicleResource.removeVehicle(1);
+            vehicleResource.getRemoveVehicleId(1);
         } catch (VehicleNotExistsException e) {
             e.getMessage();
         }

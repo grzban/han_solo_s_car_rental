@@ -1,15 +1,9 @@
 package pl.gb.edu.codecool.view;
 
-public class MainMenuView {
-
-    private ViewUtil viewUtil;
-
-    public MainMenuView() {
-        viewUtil = new ViewUtil();
-    }
+public class MainMenuView extends View {
 
     public void printMainMenu() {
-        viewUtil.clearConsole();
+        clearConsole();
         System.out.println("Wypożyczalnia pojazdów Hana Solo");
         System.out.println("1. lista obecnie dostępnych pojazdów");
         System.out.println("2. dodanie pojazdu do listy dostępnych pojazdów");

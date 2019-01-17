@@ -1,16 +1,14 @@
 package pl.gb.edu.codecool.view;
 
-public class RemoveVehicleView {
-    private int vehicleId;
-
+public class RemoveVehicleView extends View {
 
     public RemoveVehicleView() {
-        ViewUtil viewUtil = new ViewUtil();
-        vehicleId = viewUtil.getIntegerValue();
+        clearConsole();
         System.out.println("3. usunięcie pojazdu z listy dostępnych pojazdów");
     }
 
-    public int getVehicleId() {
-        return vehicleId;
+    public int getRemoveVehicleId() {
+        System.out.println("Podaj id pojazdu który chcesz usunąć");
+        return getVehicleId();
     }
 }
